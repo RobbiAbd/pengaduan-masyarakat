@@ -21,6 +21,7 @@
 					<div class="card-body">
 						<span class="text-dark">Laporan :</span> <p><?= $dp['isi_laporan'] ?></p>
 						<span class="text-dark">Telp :</span> <p><?= $dp['telp'] ?></p>
+						<span class="text-dark">Tgl Pengaduan :</span> <p><?= $dp['tgl_pengaduan'] ?></p>
 					</div>
 					<div class="text-center mb-2">
 						<div class="">

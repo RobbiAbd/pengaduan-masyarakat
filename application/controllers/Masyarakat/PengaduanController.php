@@ -69,6 +69,85 @@ class PengaduanController extends CI_Controller {
 		endif;
 	}
 
+	public function pengaduan_detail($id)
+	{
+
+		$cek_data = $this->db->get_where('pengaduan',['id_pengaduan' => htmlspecialchars($id)])->row_array();
+
+		if ( ! empty($cek_data)) :
+
+			$data['title'] = 'Detail Pengaduan';
+
+			$data['data_pengaduan'] = $this->Pengaduan_m->data_pengaduan_tanggapan(htmlspecialchars($id))->row_array();
+			if ($data['data_pengaduan']) :
+				$this->load->view('_part/backend_head', $data);
+				$this->load->view('_part/backend_sidebar_v');
+				$this->load->view('_part/backend_topbar_v');
+				$this->load->view('masyarakat/pengaduan_detail');
+				$this->load->view('_part/backend_footer_v');
+				$this->load->view('_part/backend_foot');
+			else :
+				$this->session->set_flashdata('msg','<div class="alert alert-danger" role="alert">
+					Pengaduan sedang di proses!
+					</div>');
+
+				redirect('Masyarakat/PengaduanController');			
+			endif;
+			
+		else :
+			$this->session->set_flashdata('msg','<div class="alert alert-danger" role="alert">
+				data tidak ada
+				</div>');
+
+			redirect('Masyarakat/PengaduanController');			
+		endif;
+	}
+
+	public function pengaduan_batal($id)
+	{
+		$cek_data = $this->db->get_where('pengaduan',['id_pengaduan' => htmlspecialchars($id)])->row_array();
+
+		if ( ! empty($cek_data)) :
+
+			if ($cek_data['status'] == '0') :
+
+				$resp = $this->db->delete('pengaduan',['id_pengaduan' => $id]);
+
+				// hapus file
+				$path = './assets/uploads/'.$cek_data['foto'];
+				unlink($path);
+
+				if ($resp) :
+					$this->session->set_flashdata('msg','<div class="alert alert-primary" role="alert">
+						Hapus pengaduan berhasil
+						</div>');
+
+					redirect('Masyarakat/PengaduanController');
+				else :
+					$this->session->set_flashdata('msg','<div class="alert alert-danger" role="alert">
+						Hapus pengaduan gagal!
+						</div>');
+
+					redirect('Masyarakat/PengaduanController');
+				endif;
+
+			else :
+				$this->session->set_flashdata('msg','<div class="alert alert-danger" role="alert">
+					Pengaduan sedang di proses!
+					</div>');
+
+				redirect('Masyarakat/PengaduanController');
+			endif;
+
+		else :
+			$this->session->set_flashdata('msg','<div class="alert alert-danger" role="alert">
+				data tidak ada
+				</div>');
+
+			redirect('Masyarakat/PengaduanController');				
+		endif;
+	}
+
 	private function upload_foto($foto)
 	{
 		$config['upload_path']          = './assets/uploads/';

@@ -57,7 +57,7 @@ class LoginController extends CI_Controller {
 			else :
 				// password salah
 				$this->session->set_flashdata('msg','<div class="alert alert-danger" role="alert">
-					Username atau Password salah! masyarakat
+					Username atau Password salah!
 					</div>');
 
 				return redirect('Auth/LoginController');

@@ -60,6 +60,15 @@ class Pengaduan_m extends CI_Model {
 	{
 		return $this->db->get_where($this->table,['id_pengaduan' => $id]);
 	}
+
+	public function data_pengaduan_tanggapan($id)
+	{
+		$this->db->select('pengaduan.*,tanggapan.tgl_tanggapan,tanggapan.tanggapan');
+		$this->db->from($this->table);
+		$this->db->join('tanggapan', 'tanggapan.id_pengaduan = pengaduan.id_pengaduan', 'inner');
+		$this->db->where('pengaduan.id_pengaduan', $id);
+		return $this->db->get();
+	}
 }
 
 /* End of file Pengaduan_m.php */

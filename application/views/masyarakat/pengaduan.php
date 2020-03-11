@@ -45,7 +45,8 @@
         <th scope="col">Tgl Melapor</th>
         <th scope="col">Foto</th>
         <th scope="col">Status</th>
-        <th>Lihat Detail</th>
+        <th scope="col">Lihat Detail</th>
+        <th scope="col">Aksi</th>
       </tr>
     </thead>
     <tbody>
@@ -74,14 +75,28 @@
             endif;
             ?>
           </td>
+          
           <td class="text-center">
-            <a href="#" class="btn btn-info" onclick="alert('halaman belum dibuat')"><i class="fas fa-fw fa-eye"></i></a>
+            <a href="<?= base_url('Masyarakat/PengaduanController/pengaduan_detail/'.$dp['id_pengaduan']) ?>" class="btn btn-success"><i class="fas fa-fw fa-eye"></i></a>
           </td>
-        </tr>
-      <?php endforeach; ?>
-    </tbody>
-  </table>
+
+          <?php if ($dp['status'] == '0') : ?>
+            <td>
+              <a href="<?= base_url('Masyarakat/PengaduanController/pengaduan_batal/'.$dp['id_pengaduan']) ?>" class="btn btn-warning">Hapus</a>
+
+              <a href="" class="btn btn-info" onclick="alert('belum dibuat')">Edit</a>
+            </td>
+
+            <?php else : ?>
+              <td><small>Tidak ada aksi</small></td>
+            <?php endif; ?>
 
 
-</div>
-<!-- /.container-fluid -->
+          </tr>
+        <?php endforeach; ?>
+      </tbody>
+    </table>
+
+
+  </div>
+  <!-- /.container-fluid -->
