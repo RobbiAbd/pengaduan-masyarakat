@@ -84,7 +84,7 @@
             <td>
               <a href="<?= base_url('Masyarakat/PengaduanController/pengaduan_batal/'.$dp['id_pengaduan']) ?>" class="btn btn-warning">Hapus</a>
 
-              <a href="" class="btn btn-info" onclick="alert('belum dibuat')">Edit</a>
+              <a href="<?= base_url('Masyarakat/PengaduanController/edit/'.$dp['id_pengaduan']) ?>" class="btn btn-info">Edit</a>
             </td>
 
             <?php else : ?>

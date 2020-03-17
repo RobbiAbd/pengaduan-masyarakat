@@ -84,4 +84,15 @@
     'normal' => $fontDir . '/font-awesome-5-free-normal_97bc7c5c818b3cdda7bf15ec5336aa53',
     '900' => $fontDir . '/font-awesome-5-free-900_a08ab83565c4de5d79d59aedcd3aa57b',
   ),
+  'lora' => array(
+    'bold' => $fontDir . '/lora-bold_5c4f3953864918999edeab78c9a26d74',
+  ),
+  'montserrat' => array(
+    '200' => $fontDir . '/montserrat-200_fe06cbe26dfc5791bb132d533d709117',
+    'normal' => $fontDir . '/montserrat-normal_99765fdb334a0a22a804b94acf422542',
+    '600' => $fontDir . '/montserrat-600_b32f6a3d38bb2e32d00557491439ece4',
+  ),
+  'pacifico' => array(
+    'normal' => $fontDir . '/pacifico-normal_28ae8f8f0f60d3d7c402b41244ff6f12',
+  ),
 ) ?>

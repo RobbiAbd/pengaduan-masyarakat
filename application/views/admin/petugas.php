@@ -29,7 +29,7 @@
     </div>
     <div class="form-group">
       <label for="telp">Telp</label>
-      <input type="text" class="form-control" id="telp" placeholder="" name="telp">
+      <input type="text" class="form-control" id="telp" placeholder="" name="telp" value="<?= set_value('telp') ?>">
     </div>
 
     <label for="">Level</label>
@@ -59,6 +59,7 @@
       <th scope="col">Nama</th>
       <th scope="col">Telp</th>
       <th scope="col">Level</th>
+      <th scope="col">Aksi</th>
     </tr>
   </thead>
   <tbody>
@@ -69,6 +70,14 @@
         <td><?= $dp['nama_petugas']; ?></td>
         <td><?= $dp['telp']; ?></td>
         <td><?= $dp['level']; ?></td>
+        <td>
+        <?php if ($dp['username'] == $this->session->userdata('username')) : ?>
+          <small>Tidak ada aksi</small>
+        <?php else : ?>
+          <a href="<?= base_url('Admin/PetugasController/edit/'.$dp['id_petugas']) ?>" class="btn btn-info">Edit</a>
+          <a href="<?= base_url('Admin/PetugasController/delete/'.$dp['id_petugas']) ?>" class="btn btn-warning">Hapus</a>
+        <?php endif; ?>
+        </td>
       </tr>
     <?php endforeach; ?>
   </tbody>

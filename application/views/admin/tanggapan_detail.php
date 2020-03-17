@@ -2,6 +2,7 @@
 <div class="container-fluid mb-2">
 
   <!-- Page Heading -->
+  <a href="<?= base_url('Admin/TanggapanController') ?>" class="btn btn-dark"><i class="fas fa-arrow-left"></i></a>
   <h1 class="h3 mb-4 text-gray-800"><?= $title; ?></h1>
 
   <?= validation_errors('<div class="alert alert-danger alert-dismissible fade show" role="alert">','<button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>

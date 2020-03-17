@@ -33,7 +33,7 @@ class PetugasController extends CI_Controller {
 			$this->load->view('admin/petugas');
 			$this->load->view('_part/backend_footer_v');
 			$this->load->view('_part/backend_foot');
-		 else :
+		else :
 			$params = [
 				'nama_petugas'			=> htmlspecialchars($this->input->post('nama',TRUE)),
 				'username'				=> htmlspecialchars($this->input->post('username',TRUE)),
@@ -60,6 +60,96 @@ class PetugasController extends CI_Controller {
 			endif;
 		endif;
 	}
+
+	public function delete($id)
+	{
+
+	$id_petugas = htmlspecialchars($id); // id petugas
+
+	$cek_data = $this->db->get_where('petugas',['id_petugas' => $id_petugas])->row_array();
+	
+	if ( ! empty($cek_data)) :
+		$resp = $this->db->delete('petugas',['id_petugas' => $id_petugas]);
+
+		if ($resp) :
+			$this->session->set_flashdata('msg','<div class="alert alert-primary" role="alert">
+				Akun berhasil dihapus
+				</div>');
+
+			redirect('Admin/PetugasController');
+		else :
+			$this->session->set_flashdata('msg','<div class="alert alert-danger" role="alert">
+				Akun gagal dihapus!
+				</div>');
+
+			redirect('Admin/PetugasController');
+		endif;
+	else :
+		$this->session->set_flashdata('msg','<div class="alert alert-danger" role="alert">
+			Data tidak ada
+			</div>');
+
+		redirect('Admin/PetugasController');
+	endif;
+
+}
+
+public function edit($id)
+{
+		$id_petugas = htmlspecialchars($id); // id petugas
+
+		$cek_data = $this->db->get_where('petugas',['id_petugas' => $id_petugas])->row_array();
+
+		if ( ! empty($cek_data)) :
+
+			$data['title'] = 'Edit Petugas';
+			$data['petugas'] = $cek_data;
+
+			$this->form_validation->set_rules('nama','Nama','trim|required|alpha_numeric_spaces');
+			$this->form_validation->set_rules('telp','Telp','trim|required|numeric');
+			$this->form_validation->set_rules('level','Level','trim|required');
+
+			if ($this->form_validation->run() == FALSE) :
+				$this->load->view('_part/backend_head', $data);
+				$this->load->view('_part/backend_sidebar_v');
+				$this->load->view('_part/backend_topbar_v');
+				$this->load->view('admin/edit_petugas');
+				$this->load->view('_part/backend_footer_v');
+				$this->load->view('_part/backend_foot');
+			else :
+
+			$params = [
+				'nama_petugas'			=> htmlspecialchars($this->input->post('nama',TRUE)),
+				'telp'					=> htmlspecialchars($this->input->post('telp',TRUE)),
+				'level'					=> htmlspecialchars($this->input->post('level',TRUE)),
+			];
+
+			$resp = $this->db->update('petugas',$params, ['id_petugas' => $id_petugas]);
+
+			if ($resp) :
+				$this->session->set_flashdata('msg','<div class="alert alert-primary" role="alert">
+					Akun petugas berhasil di edit
+					</div>');
+
+				redirect('Admin/PetugasController');
+			else :
+				$this->session->set_flashdata('msg','<div class="alert alert-danger" role="alert">
+					Akun petugas gagal di edit!
+					</div>');
+
+				redirect('Admin/PetugasController');
+			endif;
+
+			endif;
+
+		else :
+			$this->session->set_flashdata('msg','<div class="alert alert-danger" role="alert">
+				Data tidak ada
+				</div>');
+
+			redirect('Admin/PetugasController');
+		endif;
+	}	
 
 	public function username_check($str = NULL)
 	{
