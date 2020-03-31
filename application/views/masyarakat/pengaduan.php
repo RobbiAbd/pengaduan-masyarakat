@@ -35,8 +35,9 @@
 
   <!-- Page Heading -->
   <h1 class="h3 mb-4 mt-5 text-gray-800">Data Pengaduan</h1>
-
-  <table class="table table-responsive">
+  
+  <div class="table-responsive">
+  <table class="table">
     <thead class="thead-dark">
       <tr>
         <th scope="col">#</th>
@@ -96,6 +97,7 @@
         <?php endforeach; ?>
       </tbody>
     </table>
+    </div>
 
 
   </div>
