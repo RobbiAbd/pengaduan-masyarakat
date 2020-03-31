@@ -1,5 +1,6 @@
 # pengaduan-masyarakat
- Admin\ 
+
+Admin
 Username : admin\
 Pass : 123456
 
@@ -9,7 +10,9 @@ Pass : 123456
 
  Masyarakat\
 Username : masyarakat\
-Pass : 123456\
+Pass : 123456
+
+
 
 
 ![Alt text](assets/uploads/pengaduan-img.png?raw=true "Title")
