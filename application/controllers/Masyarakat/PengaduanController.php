@@ -109,7 +109,7 @@ class PengaduanController extends CI_Controller {
 
 		if ( ! empty($cek_data)) :
 
-			if ($cek_data['status'] == '0') :
+			if ($cek_data['status'] == 'Diajukan') :
 
 				$resp = $this->db->delete('pengaduan',['id_pengaduan' => $id]);
 
@@ -154,7 +154,7 @@ class PengaduanController extends CI_Controller {
 
 		if ( ! empty($cek_data)) :
 
-			if ($cek_data['status'] == '0') :
+			if ($cek_data['status'] == 'Diajukan') :
 
 				$data['title'] = 'Edit Pengaduan';
 				$data['pengaduan'] = $cek_data;

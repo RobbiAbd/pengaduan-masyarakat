@@ -55,9 +55,13 @@ CREATE TABLE `pengaduan` (
   `id_pengaduan` bigint(16) NOT NULL,
   `tgl_pengaduan` date NOT NULL,
   `nik` bigint(16) NOT NULL,
+  `hubungan` varchar(35) NOT NULL,
+  `lokasi_kejadian` varchar(35) NOT NULL,
+  `nama_korban` varchar(35) NOT NULL,
+  `jenis_laporan` varchar(35) NOT NULL,
   `isi_laporan` text NOT NULL,
   `foto` varchar(255) NOT NULL,
-  `status` enum('0','proses','selesai','tolak') NOT NULL
+  `status` enum('Diajukan','Diproses','Selesai','Ditolak') NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
