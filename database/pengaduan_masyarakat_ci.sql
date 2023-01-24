@@ -34,6 +34,7 @@ CREATE TABLE `masyarakat` (
   `username` varchar(25) NOT NULL,
   `password` varchar(225) NOT NULL,
   `telp` varchar(13) NOT NULL,
+  `alamat` varchar(35) NOT NULL,
   `foto_profile` varchar(225) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
@@ -41,8 +42,8 @@ CREATE TABLE `masyarakat` (
 -- Dumping data for table `masyarakat`
 --
 
-INSERT INTO `masyarakat` (`nik`, `nama`, `username`, `password`, `telp`, `foto_profile`) VALUES
-(123, 'robbi', 'masyarakat', '$2y$10$BqCVWU56ME/Y.MctVXBw7uI8w26d1gK/HY219JiQWe./ppfYVEeYS', '123', 'user.png');
+INSERT INTO `masyarakat` (`nik`, `nama`, `username`, `password`, `telp`, `alamat`, `foto_profile`) VALUES
+(123, 'robbi', 'masyarakat', '$2y$10$BqCVWU56ME/Y.MctVXBw7uI8w26d1gK/HY219JiQWe./ppfYVEeYS', '123', 'pangkal', 'user.png');
 
 -- --------------------------------------------------------
 
