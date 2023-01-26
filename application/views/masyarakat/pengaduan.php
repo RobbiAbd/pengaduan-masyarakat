@@ -12,6 +12,10 @@
     <div class="col-lg-6">
       <?= form_open_multipart('Masyarakat/PengaduanController'); ?>
       <div class="form-group">
+        <label for="hubungan">Hubungan dengan korban</label>
+        <input name="hubungan" id="hubungan" class="form-control"></input>
+      </div>
+      <div class="form-group">
         <label for="isi_laporan">Isi Laporan</label>
         <textarea name="isi_laporan" id="isi_laporan" cols="30" rows="10" class="form-control"></textarea>
       </div>
