@@ -16,7 +16,7 @@ class Pengaduan_m extends CI_Model {
 		$this->db->select('pengaduan.*,masyarakat.nama,masyarakat.telp');
 		$this->db->from($this->table);
 		$this->db->join('masyarakat', 'masyarakat.nik = pengaduan.nik', 'inner');
-		$this->db->where('status', '0');
+		$this->db->where('status', 'Diajukan');
 		return $this->db->get();
 	}
 
@@ -34,7 +34,7 @@ class Pengaduan_m extends CI_Model {
 		$this->db->select('pengaduan.*,masyarakat.nama,masyarakat.telp');
 		$this->db->from($this->table);
 		$this->db->join('masyarakat', 'masyarakat.nik = pengaduan.nik', 'inner');
-		$this->db->where('status', 'proses');
+		$this->db->where('status', 'Diproses');
 		return $this->db->get();
 	}
 
@@ -43,7 +43,7 @@ class Pengaduan_m extends CI_Model {
 		$this->db->select('pengaduan.*,masyarakat.nama,masyarakat.telp');
 		$this->db->from($this->table);
 		$this->db->join('masyarakat', 'masyarakat.nik = pengaduan.nik', 'inner');
-		$this->db->where('status', 'selesai');
+		$this->db->where('status', 'Selesai');
 		return $this->db->get();
 	}
 
@@ -52,7 +52,7 @@ class Pengaduan_m extends CI_Model {
 		$this->db->select('pengaduan.*,masyarakat.nama,masyarakat.telp');
 		$this->db->from($this->table);
 		$this->db->join('masyarakat', 'masyarakat.nik = pengaduan.nik', 'inner');
-		$this->db->where('status', 'tolak');
+		$this->db->where('status', 'Ditolak');
 		return $this->db->get();
 	}
 

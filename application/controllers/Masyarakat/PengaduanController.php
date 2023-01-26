@@ -43,11 +43,14 @@ class PengaduanController extends CI_Controller {
 
         $params = [
           'tgl_pengaduan'   => date('Y-m-d'),
-          'nik'       => $masyarakat['nik'],
-          'isi_laporan'   => htmlspecialchars($this->input->post('isi_laporan',true)),
-          'hubungan'    => htmlspecialchars($this->input->post('hubungan',true)),
-          'foto'        => $upload_foto,
-          'status'      => 'Diajukan',
+          'nik'             => $masyarakat['nik'],
+          'hubungan'        => htmlspecialchars($this->input->post('hubungan',true)),
+          'lokasi_kejadian' => htmlspecialchars($this->input->post('lokasi_kejadian',true)),
+          'nama_korban' => htmlspecialchars($this->input->post('nama_korban',true)),
+          'jenis_laporan' => htmlspecialchars($this->input->post('jenis_laporan',true)),
+          'isi_laporan'     => htmlspecialchars($this->input->post('isi_laporan',true)),
+          'foto'            => $upload_foto,
+          'status'          => 'Diajukan',
         ];
 
         $resp = $this->Pengaduan_m->create($params);

@@ -13,7 +13,7 @@
     <div class="col-lg-6">
       <?= form_open_multipart('Masyarakat/PengaduanController/edit/'.$pengaduan['id_pengaduan']); ?>
       <div class="form-group">
-        <label for="isi_laporan">Isi Laporan</label>
+        <label for="isi_laporan">Kronologi Kejadian</label>
         <input type="text" class="form-control" name="isi_laporan" id="isi_laporan" value="<?= $pengaduan['isi_laporan'] ?>">
       </div>
 

@@ -16,10 +16,34 @@
         <input name="hubungan" id="hubungan" class="form-control"></input>
       </div>
       <div class="form-group">
-        <label for="isi_laporan">Isi Laporan</label>
-        <textarea name="isi_laporan" id="isi_laporan" cols="30" rows="10" class="form-control"></textarea>
+        <label for="lokasi_kejadian">Lokasi Kejadian</label>
+        <input name="lokasi_kejadian" id="lokasi_kejadian" class="form-control"></input>
       </div>
-
+      <div class="form-group">
+        <label for="nama_korban">Nama Korban</label>
+        <input name="nama_korban" id="nama_korban" class="form-control"></input>
+      </div>
+      <div class="form-group">
+        <label for="jenis_laporan">Jenis Laporan</label> </br>
+        <input type="radio" id="jenis_laporan" name="jenis_laporan" value="Kekerasan Dalam Rumah Tangga">
+        <label for="html">Kekerasan Dalam Rumah Tangga</label><br>
+        <input type="radio" id="jenis_laporan" name="jenis_laporan" value="Hak Asuh Anak">
+        <label for="css">Hak Asuh Anak</label><br>
+        <input type="radio" id="jenis_laporan" name="jenis_laporan" value="Pelecehan Seksual">
+        <label for="javascript">Pelecehan Seksual</label>
+        <input type="radio" id="jenis_laporan" name="jenis_laporan" value="Pelecehan Verbal/Non Verbal">
+        <label for="javascript">Pelecehan Verbal/Non Verbal</label>
+        <input type="radio" id="jenis_laporan" name="jenis_laporan" value="Pencabulan">
+        <label for="javascript">Pencabulan</label>
+        <input type="radio" id="jenis_laporan" name="jenis_laporan" value="Perdagangan Orang">
+        <label for="javascript">Perdagangan Orang</label>
+        <input type="radio" id="jenis_laporan" name="jenis_laporan" value="Lainnya">
+        <label for="javascript">Lainnya</label>
+      </div>
+      <div class="form-group">
+        <label for="isi_laporan">Kronologi Kejadian</label>
+        <textarea name="isi_laporan" id="isi_laporan" cols="30" rows="4" class="form-control"></textarea>
+      </div>
       <div class="form-group">
         <label for="foto">Upload Foto</label>
         <div class="custom-file">
@@ -46,7 +70,9 @@
       <tr>
         <th scope="col">#</th>
         <th scope="col">Nama</th>
-        <th scope="col">Isi Laporan</th>
+        <th scope="col">Nama Korban</th>
+        <th scope="col">Jenis Laporan</th>
+        <th scope="col">Kronologi Kejadian</th>
         <th scope="col">Tgl Melapor</th>
         <th scope="col">Foto</th>
         <th scope="col">Status</th>
@@ -60,6 +86,8 @@
         <tr>
           <th scope="row"><?= $no++; ?></th>
           <td><?= $dp['nama']; ?></td>
+          <td><?= $dp['nama_korban']; ?></td>
+          <td><?= $dp['jenis_laporan']; ?></td>
           <td><?= $dp['isi_laporan']; ?></td>
           <td><?= $dp['tgl_pengaduan']; ?></td>
           <td>
