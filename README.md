@@ -1,5 +1,38 @@
 # pengaduan-masyarakat
 
+## Instalasi
+
+### Prerequisites
+
+```
+install XAMPP
+install composer using doc https://www.thecodedeveloper.com/install-composer-windows-xampp/
+```
+### Installing
+
+For installing this template you can direct download or clone this project
+
+```
+cd to xampp dir
+download zip from url https://github.com/tuanpembual/pengaduan-masyarakat/archive/refs/heads/master.zip
+and unzip
+run composer install ()
+    composer update
+    composer install
+```
+
+### setup database
+```
+create db using phpmdmin
+db_name: pengaduan_masyarakat_ci
+
+import db from sql file (/database/pengaduan_masyarakat_ci.sql)
+```
+
+### 
+
+
+## Login
 Admin\
 Username : admin\
 Pass : 123456
@@ -72,20 +105,6 @@ These instructions will get you a copy of the project up and running on your loc
         $this->load->view('_part/backend_footer_v');
         $this->load->view('_part/backend_foot');
     }
-```
-
-
-### Prerequisites
-
-* Min Php for support codeigniter3
-* Web Server Apache or Ngix
-
-### Installing
-
-For installing this template you can direct download or clone this project
-
-```
-git clone repo-name
 ```
 
 ## Built With
