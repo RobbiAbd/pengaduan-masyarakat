@@ -47,6 +47,7 @@ class PengaduanController extends CI_Controller {
           'hubungan'        => htmlspecialchars($this->input->post('hubungan',true)),
           'lokasi_kejadian' => htmlspecialchars($this->input->post('lokasi_kejadian',true)),
           'nama_korban' => htmlspecialchars($this->input->post('nama_korban',true)),
+          'nama_pelaku' => htmlspecialchars($this->input->post('nama_pelaku',true)),
           'jenis_laporan' => htmlspecialchars($this->input->post('jenis_laporan',true)),
           'isi_laporan'     => htmlspecialchars($this->input->post('isi_laporan',true)),
           'foto'            => $upload_foto,
@@ -190,6 +191,10 @@ class PengaduanController extends CI_Controller {
             unlink($path);
 
             $params = [
+              'hubungan'        => htmlspecialchars($this->input->post('hubungan',true)),
+              'lokasi_kejadian' => htmlspecialchars($this->input->post('lokasi_kejadian',true)),
+              'nama_korban' => htmlspecialchars($this->input->post('nama_korban',true)),
+              'nama_pelaku' => htmlspecialchars($this->input->post('nama_pelaku',true)),
               'isi_laporan'   => htmlspecialchars($this->input->post('isi_laporan',true)),
               'foto'        => $upload_foto,
             ];

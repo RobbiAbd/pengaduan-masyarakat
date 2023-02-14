@@ -16,7 +16,7 @@
         <input name="nama_korban" id="nama_korban" class="form-control"></input>
       </div>
       <div class="form-group">
-        <label for="hubungan">Hubungan dengan korban</label>
+        <label for="hubungan">Hubungan Pelapor dengan korban</label>
         <input name="hubungan" id="hubungan" class="form-control"></input>
       </div>
       <div class="form-group">
