@@ -5,11 +5,11 @@
   <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
 
     <!-- Sidebar - Brand -->
-    <a class="sidebar-brand d-flex align-items-center justify-content-center" href="index.html">
+    <a class="sidebar-brand d-flex align-items-center justify-content-center" style="height:10rem;" href="#">
       <div class="sidebar-brand-icon rotate-n-15">
         <!-- <i class="fas fa-laugh-wink"></i> -->
       </div>
-      <div class="sidebar-brand-text mx-3">Sistem Pengaduan Masyarakat</div>
+      <div class="sidebar-brand-text mx-3">Sistem Informasi Pelayanan Kekerasan Perempuan dan Anak</div>
     </a>
     
     <?php if ($this->session->userdata('level') == 'admin' OR $this->session->userdata('level') == 'petugas') : ?>

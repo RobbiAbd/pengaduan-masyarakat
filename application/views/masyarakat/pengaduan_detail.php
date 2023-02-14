@@ -16,11 +16,21 @@
       </div>
       <div class="col-md-8">
         <div class="card-body">
-          <h5 class="card-title">Laporan : <span class="text-dark"><?= $data_pengaduan['isi_laporan'] ?></span></h5>
-          <p class="card-text"> Status : <span class="badge badge-secondary"><?= $data_pengaduan['status'] ?></span></p>
-          <p class="card-text">Tanggapan : <span class="text-success"><?= $data_pengaduan['tanggapan'] ?></span></p>
-          <p class="card-text">Tgl Pengaduan : <span class="text-danger"><?= $data_pengaduan['tgl_pengaduan'] ?></span></p>
-          <p class="card-text">Tgl Tanggapan : <span class="text-danger"><?= $data_pengaduan['tgl_tanggapan'] ?></span></p>
+          <h5 class="card-title">Laporan Pengaduan</h5>
+          <p class="card-text">
+            Tgl Pengaduan : <span class="text-danger"><?= $data_pengaduan['tgl_pengaduan'] ?></span><br>
+            Tgl Tanggapan : <span class="text-danger"><?= $data_pengaduan['tgl_tanggapan'] ?></span><br>
+            Status : <span class="badge badge-secondary"><?= $data_pengaduan['status'] ?></span><br>
+            Tanggapan : <span class="text-success"><?= $data_pengaduan['tanggapan'] ?></span><br>
+          </p>
+          <p class="card-text">
+            Nama Pelaku : <span class="text-dark"><?= $data_pengaduan['nama_pelaku'] ?></span><br>
+            Nama Korban : <span class="text-dark"><?= $data_pengaduan['nama_korban'] ?></span><br>
+            Hub dgn Korban : <span class="text-dark"><?= $data_pengaduan['hubungan'] ?></span><br>
+            Lokasi Kejadian : <span class="text-dark"><?= $data_pengaduan['lokasi_kejadian'] ?></span><br>
+            Jenis Laporan : <span class="text-dark"><?= $data_pengaduan['jenis_laporan'] ?></span><br>
+            Kronologi : <span class="text-dark"><?= $data_pengaduan['isi_laporan'] ?></span><br>
+          </p>
         </div>
       </div>
     </div>

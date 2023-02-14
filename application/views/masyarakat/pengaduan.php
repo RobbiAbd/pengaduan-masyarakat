@@ -12,6 +12,10 @@
     <div class="col-lg-6">
       <?= form_open_multipart('Masyarakat/PengaduanController'); ?>
       <div class="form-group">
+        <label for="nama_korban">Nama Korban</label>
+        <input name="nama_korban" id="nama_korban" class="form-control"></input>
+      </div>
+      <div class="form-group">
         <label for="hubungan">Hubungan dengan korban</label>
         <input name="hubungan" id="hubungan" class="form-control"></input>
       </div>
@@ -20,25 +24,25 @@
         <input name="lokasi_kejadian" id="lokasi_kejadian" class="form-control"></input>
       </div>
       <div class="form-group">
-        <label for="nama_korban">Nama Korban</label>
-        <input name="nama_korban" id="nama_korban" class="form-control"></input>
-      </div>
-      <div class="form-group">
-        <label for="jenis_laporan">Jenis Laporan</label> </br>
+        <label for="jenis_laporan">Jenis Laporan</label></br>
         <input type="radio" id="jenis_laporan" name="jenis_laporan" value="Kekerasan Dalam Rumah Tangga">
         <label for="html">Kekerasan Dalam Rumah Tangga</label><br>
         <input type="radio" id="jenis_laporan" name="jenis_laporan" value="Hak Asuh Anak">
         <label for="css">Hak Asuh Anak</label><br>
         <input type="radio" id="jenis_laporan" name="jenis_laporan" value="Pelecehan Seksual">
-        <label for="javascript">Pelecehan Seksual</label>
+        <label for="javascript">Pelecehan Seksual</label></br>
         <input type="radio" id="jenis_laporan" name="jenis_laporan" value="Pelecehan Verbal/Non Verbal">
-        <label for="javascript">Pelecehan Verbal/Non Verbal</label>
+        <label for="javascript">Pelecehan Verbal/Non Verbal</label></br>
         <input type="radio" id="jenis_laporan" name="jenis_laporan" value="Pencabulan">
-        <label for="javascript">Pencabulan</label>
+        <label for="javascript">Pencabulan</label></br>
         <input type="radio" id="jenis_laporan" name="jenis_laporan" value="Perdagangan Orang">
-        <label for="javascript">Perdagangan Orang</label>
+        <label for="javascript">Perdagangan Orang</label></br>
         <input type="radio" id="jenis_laporan" name="jenis_laporan" value="Lainnya">
         <label for="javascript">Lainnya</label>
+      </div>
+      <div class="form-group">
+        <label for="nama_pelaku">Nama Pelaku</label>
+        <input name="nama_pelaku" id="nama_pelaku" class="form-control"></input>
       </div>
       <div class="form-group">
         <label for="isi_laporan">Kronologi Kejadian</label>
@@ -69,10 +73,10 @@
     <thead class="thead-dark">
       <tr>
         <th scope="col">#</th>
-        <th scope="col">Nama</th>
+        <th scope="col">Nama Pelapor</th>
         <th scope="col">Nama Korban</th>
+        <th scope="col">Hub dgn Korban</th>
         <th scope="col">Jenis Laporan</th>
-        <th scope="col">Kronologi Kejadian</th>
         <th scope="col">Tgl Melapor</th>
         <th scope="col">Foto</th>
         <th scope="col">Status</th>
@@ -87,8 +91,8 @@
           <th scope="row"><?= $no++; ?></th>
           <td><?= $dp['nama']; ?></td>
           <td><?= $dp['nama_korban']; ?></td>
+          <td><?= $dp['hubungan']; ?></td>
           <td><?= $dp['jenis_laporan']; ?></td>
-          <td><?= $dp['isi_laporan']; ?></td>
           <td><?= $dp['tgl_pengaduan']; ?></td>
           <td>
             <img width="100" src="<?= base_url() ?>assets/uploads/<?= $dp['foto']; ?>" alt="">

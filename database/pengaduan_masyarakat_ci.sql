@@ -43,7 +43,7 @@ CREATE TABLE `masyarakat` (
 --
 
 INSERT INTO `masyarakat` (`nik`, `nama`, `username`, `password`, `telp`, `alamat`, `foto_profile`) VALUES
-(123, 'robbi', 'masyarakat', '$2y$10$BqCVWU56ME/Y.MctVXBw7uI8w26d1gK/HY219JiQWe./ppfYVEeYS', '123', 'pangkal', 'user.png');
+(123, 'aisyah', 'masyarakat', '$2y$10$BqCVWU56ME/Y.MctVXBw7uI8w26d1gK/HY219JiQWe./ppfYVEeYS', '123', 'pangkal', 'user.png');
 
 -- --------------------------------------------------------
 
@@ -56,6 +56,7 @@ CREATE TABLE `pengaduan` (
   `tgl_pengaduan` date NOT NULL,
   `nik` bigint(16) NOT NULL,
   `hubungan` varchar(35) NOT NULL,
+  `nama_pelaku` varchar(35) NOT NULL,
   `lokasi_kejadian` varchar(35) NOT NULL,
   `nama_korban` varchar(35) NOT NULL,
   `jenis_laporan` varchar(35) NOT NULL,
