@@ -43,7 +43,7 @@ CREATE TABLE `masyarakat` (
 --
 
 INSERT INTO `masyarakat` (`nik`, `nama`, `username`, `password`, `telp`, `alamat`, `foto_profile`) VALUES
-(123, 'aisyah', 'masyarakat', '$2y$10$BqCVWU56ME/Y.MctVXBw7uI8w26d1gK/HY219JiQWe./ppfYVEeYS', '123', 'pangkal', 'user.png');
+(1212345678912354, 'aisyah', 'masyarakat', '$2y$10$BqCVWU56ME/Y.MctVXBw7uI8w26d1gK/HY219JiQWe./ppfYVEeYS', '08131111111', 'pangkal', 'user.png');
 
 -- --------------------------------------------------------
 
@@ -73,10 +73,12 @@ CREATE TABLE `pengaduan` (
 
 CREATE TABLE `petugas` (
   `id_petugas` int(11) NOT NULL,
-  `nama_petugas` varchar(35) NOT NULL,
+  `nama` varchar(35) NOT NULL,
+  `nik` bigint(16) NOT NULL,
   `username` varchar(25) NOT NULL,
   `password` varchar(225) NOT NULL,
   `telp` varchar(13) NOT NULL,
+  `alamat` varchar(35) NOT NULL,
   `level` enum('admin','petugas') NOT NULL,
   `foto_profile` varchar(225) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
@@ -85,9 +87,9 @@ CREATE TABLE `petugas` (
 -- Dumping data for table `petugas`
 --
 
-INSERT INTO `petugas` (`id_petugas`, `nama_petugas`, `username`, `password`, `telp`, `level`, `foto_profile`) VALUES
-(2, 'abdul', 'admin', '$2y$10$YlpZmz2Uq.RxG5bHvMjYjej5y2AYkEzr9JbDKGHe3sWbpFkVhkury', '123', 'admin', 'user.png'),
-(6, 'petugas', 'petugas', '$2y$10$SIUNsTMGwDOoXJ62kgoMueorXuuDenxdG0ZKRU1NUigM2Xby0bAmC', '123456', 'petugas', 'user.png');
+INSERT INTO `petugas` (`id_petugas`, `nama`, `nik`, `username`, `password`, `telp`, `alamat`, `level`, `foto_profile`) VALUES
+(2, 'putri', 'admin', 3212345678912354, '$2y$10$YlpZmz2Uq.RxG5bHvMjYjej5y2AYkEzr9JbDKGHe3sWbpFkVhkury', '08111111111', 'belitong','admin', 'user.png'),
+(6, 'amini', 'petugas', 3212345678912352, '$2y$10$SIUNsTMGwDOoXJ62kgoMueorXuuDenxdG0ZKRU1NUigM2Xby0bAmC', '081222222222', 'mentok', 'petugas', 'user.png');
 
 -- --------------------------------------------------------
 
