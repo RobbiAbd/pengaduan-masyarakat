@@ -68,7 +68,7 @@
     <?php foreach ($data_petugas as $dp) : ?>
       <tr>
         <th scope="row"><?= $no++; ?></th>
-        <td><?= $dp['nama_petugas']; ?></td>
+        <td><?= $dp['nama']; ?></td>
         <td><?= $dp['telp']; ?></td>
         <td><?= $dp['level']; ?></td>
         <td>

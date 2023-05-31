@@ -1,9 +1,9 @@
 -- phpMyAdmin SQL Dump
--- version 4.9.2
+-- version 5.0.1
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Generation Time: Mar 10, 2020 at 02:25 PM
+-- Generation Time: May 30, 2023 at 11:18 AM
 -- Server version: 10.4.11-MariaDB
 -- PHP Version: 7.4.1
 
@@ -21,6 +21,31 @@ SET time_zone = "+00:00";
 --
 -- Database: `pengaduan_masyarakat_ci`
 --
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `kabupaten`
+--
+
+CREATE TABLE `kabupaten` (
+  `id` int(11) NOT NULL,
+  `nama` varchar(255) NOT NULL,
+  `ibukota` varchar(255) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `kabupaten`
+--
+
+INSERT INTO `kabupaten` (`id`, `nama`, `ibukota`) VALUES
+(1, 'Bangka', 'Sungai Liat'),
+(2, 'Bangka Barat', 'Muntok'),
+(3, 'Bangka Selatan', 'Toboali'),
+(4, 'Bangka Tengah', 'Koba'),
+(5, 'Belitung', 'Tanjung Pandan'),
+(6, 'Belitung Timur', 'Manggar'),
+(7, 'Pangkal Pinang', 'Pangkal Pinang');
 
 -- --------------------------------------------------------
 
@@ -88,8 +113,28 @@ CREATE TABLE `petugas` (
 --
 
 INSERT INTO `petugas` (`id_petugas`, `nama`, `nik`, `username`, `password`, `telp`, `alamat`, `level`, `foto_profile`) VALUES
-(2, 'putri', 'admin', 3212345678912354, '$2y$10$YlpZmz2Uq.RxG5bHvMjYjej5y2AYkEzr9JbDKGHe3sWbpFkVhkury', '08111111111', 'belitong','admin', 'user.png'),
-(6, 'amini', 'petugas', 3212345678912352, '$2y$10$SIUNsTMGwDOoXJ62kgoMueorXuuDenxdG0ZKRU1NUigM2Xby0bAmC', '081222222222', 'mentok', 'petugas', 'user.png');
+(2, 'putri', 3212345678912354, 'admin', '$2y$10$YlpZmz2Uq.RxG5bHvMjYjej5y2AYkEzr9JbDKGHe3sWbpFkVhkury', '08111111111', 'belitong', 'admin', 'user.png'),
+(6, 'amini', 3212345678912352, 'petugas', '$2y$10$SIUNsTMGwDOoXJ62kgoMueorXuuDenxdG0ZKRU1NUigM2Xby0bAmC', '081222222222', 'mentok', 'petugas', 'user.png');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `petugas_kabupaten`
+--
+
+CREATE TABLE `petugas_kabupaten` (
+  `id` int(11) NOT NULL,
+  `petugas_id` int(11) NOT NULL,
+  `kabupaten_id` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `petugas_kabupaten`
+--
+
+INSERT INTO `petugas_kabupaten` (`id`, `petugas_id`, `kabupaten_id`) VALUES
+(1, 2, 5),
+(2, 6, 7);
 
 -- --------------------------------------------------------
 
@@ -108,6 +153,12 @@ CREATE TABLE `tanggapan` (
 --
 -- Indexes for dumped tables
 --
+
+--
+-- Indexes for table `kabupaten`
+--
+ALTER TABLE `kabupaten`
+  ADD PRIMARY KEY (`id`);
 
 --
 -- Indexes for table `masyarakat`
@@ -130,6 +181,14 @@ ALTER TABLE `petugas`
   ADD UNIQUE KEY `username` (`username`);
 
 --
+-- Indexes for table `petugas_kabupaten`
+--
+ALTER TABLE `petugas_kabupaten`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `petugas` (`petugas_id`),
+  ADD KEY `kabupaten` (`kabupaten_id`);
+
+--
 -- Indexes for table `tanggapan`
 --
 ALTER TABLE `tanggapan`
@@ -140,6 +199,12 @@ ALTER TABLE `tanggapan`
 --
 -- AUTO_INCREMENT for dumped tables
 --
+
+--
+-- AUTO_INCREMENT for table `kabupaten`
+--
+ALTER TABLE `kabupaten`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- AUTO_INCREMENT for table `pengaduan`
@@ -154,10 +219,27 @@ ALTER TABLE `petugas`
   MODIFY `id_petugas` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
+-- AUTO_INCREMENT for table `petugas_kabupaten`
+--
+ALTER TABLE `petugas_kabupaten`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+
+--
 -- AUTO_INCREMENT for table `tanggapan`
 --
 ALTER TABLE `tanggapan`
   MODIFY `id_tanggapan` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
+
+--
+-- Constraints for dumped tables
+--
+
+--
+-- Constraints for table `petugas_kabupaten`
+--
+ALTER TABLE `petugas_kabupaten`
+  ADD CONSTRAINT `petugas_kabupaten_ibfk_1` FOREIGN KEY (`petugas_id`) REFERENCES `petugas` (`id_petugas`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `petugas_kabupaten_ibfk_2` FOREIGN KEY (`kabupaten_id`) REFERENCES `kabupaten` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
