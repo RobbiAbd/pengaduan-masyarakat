@@ -20,7 +20,7 @@ class RegisterController extends CI_Controller {
 		$this->form_validation->set_rules('username','Username','trim|required|alpha_numeric_spaces|callback_username_check');
 		$this->form_validation->set_rules('password','Password','trim|required|alpha_numeric_spaces|min_length[6]|max_length[15]');
 		$this->form_validation->set_rules('telp','Telp','trim|required|numeric');
-		$this->form_validation->set_rules('alamat', 'Alamat', 'trim|required|alpha_numeric_spaces');
+		$this->form_validation->set_rules('alamat', 'Alamat', 'trim|required');
 
 		if ($this->form_validation->run() == FALSE) :
 			$this->load->view('_part/login_head', $data);
