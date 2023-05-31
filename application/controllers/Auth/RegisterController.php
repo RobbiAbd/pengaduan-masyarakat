@@ -20,6 +20,7 @@ class RegisterController extends CI_Controller {
 		$this->form_validation->set_rules('username','Username','trim|required|alpha_numeric_spaces|callback_username_check');
 		$this->form_validation->set_rules('password','Password','trim|required|alpha_numeric_spaces|min_length[6]|max_length[15]');
 		$this->form_validation->set_rules('telp','Telp','trim|required|numeric');
+		$this->form_validation->set_rules('alamat', 'Alamat', 'trim|required|alpha_numeric_spaces');
 
 		if ($this->form_validation->run() == FALSE) :
 			$this->load->view('_part/login_head', $data);
@@ -32,6 +33,7 @@ class RegisterController extends CI_Controller {
 				'username'		=> htmlspecialchars($this->input->post('username',TRUE)),
 				'password'		=> password_hash(htmlspecialchars($this->input->post('password',TRUE)), PASSWORD_DEFAULT),
 				'telp'			=> htmlspecialchars($this->input->post('telp',TRUE)),
+				'alamat'		=> htmlspecialchars($this->input->post('alamat', TRUE)),
 				'foto_profile'	=> 'user.png',
 			];
 
@@ -39,7 +41,7 @@ class RegisterController extends CI_Controller {
 
 			if ($resp) :
 				$this->session->set_flashdata('msg','<div class="alert alert-primary" role="alert">
-					Register berhasil, Silahkan Login!
+					Register berhasil, Silahkan Menunggu Akun Dikonfirmasi Admin!
 					</div>');
 
 				redirect('Auth/LoginController');

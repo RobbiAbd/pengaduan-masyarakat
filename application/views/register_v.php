@@ -18,19 +18,22 @@
 
               <?= form_open('Auth/RegisterController', 'class="user"') ?>
               <div class="form-group">
-                <input type="text" class="form-control form-control-user" id="nik" placeholder="nik" name="nik" value="<?= set_value('nik') ?>">
+                <input type="text" class="form-control form-control-user invalid" id="nik" placeholder="NIK" name="nik" value="<?= set_value('nik') ?>">
               </div>
               <div class="form-group">
                 <input type="text" class="form-control form-control-user" id="nama" placeholder="Nama" name="nama" value="<?= set_value('nama') ?>">
               </div>
               <div class="form-group">
-                <input type="text" class="form-control form-control-user" id="username" name="username" placeholder="Username" value="<?= set_value('username') ?>">  
+                <input type="text" class="form-control form-control-user" id="username" placeholder="Username" name="username" value="<?= set_value('username') ?>">  
               </div>
               <div class="form-group">
-                <input type="password" class="form-control form-control-user" id="password" name="password" placeholder="Password">
+                <input type="password" class="form-control form-control-user" id="password" placeholder="Password" name="password">
               </div>
               <div class="form-group">
-                <input type="text" class="form-control form-control-user" id="telp" placeholder="telp" name="telp">
+                <input type="text" class="form-control form-control-user" id="telp" placeholder="No Telepon" name="telp">
+              </div>
+              <div class="form-group">
+                <input type="text" class="form-control form-control-user" id="alamat" placeholder="Alamat" name="alamat">
               </div>
               <button type="submit" class="btn btn-primary btn-user btn-block">Register</button>
             </form>
