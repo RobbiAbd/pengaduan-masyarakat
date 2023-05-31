@@ -68,7 +68,7 @@ CREATE TABLE `masyarakat` (
 --
 
 INSERT INTO `masyarakat` (`nik`, `nama`, `username`, `password`, `telp`, `alamat`, `foto_profile`, `is_verified`) VALUES
-(1212345678912354, 'aisyah', 'masyarakat', '$2y$10$BqCVWU56ME/Y.MctVXBw7uI8w26d1gK/HY219JiQWe./ppfYVEeYS', '08131111111', 'pangkal', 'user.png', 0);
+(1212345678912354, 'aisyah', 'masyarakat', '$2y$10$BqCVWU56ME/Y.MctVXBw7uI8w26d1gK/HY219JiQWe./ppfYVEeYS', '08131111111', 'pangkal', 'user.png', 1);
 
 -- --------------------------------------------------------
 
