@@ -45,7 +45,7 @@ INSERT INTO `kabupaten` (`id`, `nama`, `ibukota`) VALUES
 (4, 'Bangka Tengah', 'Koba'),
 (5, 'Belitung', 'Tanjung Pandan'),
 (6, 'Belitung Timur', 'Manggar'),
-(7, 'Pangkal Pinang', '-');
+(7, 'Pangkal Pinang', 'Pangkal Pinang');
 
 -- --------------------------------------------------------
 
