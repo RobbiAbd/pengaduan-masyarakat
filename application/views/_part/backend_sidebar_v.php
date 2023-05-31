@@ -95,6 +95,7 @@
           <?php if ($this->session->userdata('level') == 'admin') : ?>
             <h6 class="collapse-header">Registrasi:</h6>
             <a class="collapse-item" href="<?= base_url('Admin/PetugasController'); ?>">Tambah Petugas</a>
+            <a class="collapse-item" href="<?= base_url('Admin/MasyarakatController'); ?>"> Konfirmasi Akun</a>
           <?php endif; ?>
           <?php // end tambah petugas admin akses ?>
 
