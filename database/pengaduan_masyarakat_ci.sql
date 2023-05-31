@@ -45,7 +45,7 @@ INSERT INTO `kabupaten` (`id`, `nama`, `ibukota`) VALUES
 (4, 'Bangka Tengah', 'Koba'),
 (5, 'Belitung', 'Tanjung Pandan'),
 (6, 'Belitung Timur', 'Manggar'),
-(7, 'Pangkal Pinang', '-');
+(7, 'Pangkal Pinang', 'Pangkal Pinang');
 
 -- --------------------------------------------------------
 
@@ -113,8 +113,8 @@ CREATE TABLE `petugas` (
 --
 
 INSERT INTO `petugas` (`id_petugas`, `nama`, `nik`, `username`, `password`, `telp`, `alamat`, `level`, `foto_profile`) VALUES
-(2, 'putri', 0, 'admin', '$2y$10$YlpZmz2Uq.RxG5bHvMjYjej5y2AYkEzr9JbDKGHe3sWbpFkVhkury', '08111111111', 'belitong', 'admin', 'user.png'),
-(6, 'amini', 0, 'petugas', '$2y$10$SIUNsTMGwDOoXJ62kgoMueorXuuDenxdG0ZKRU1NUigM2Xby0bAmC', '081222222222', 'mentok', 'petugas', 'user.png');
+(2, 'putri', 3212345678912354, 'admin', '$2y$10$YlpZmz2Uq.RxG5bHvMjYjej5y2AYkEzr9JbDKGHe3sWbpFkVhkury', '08111111111', 'belitong', 'admin', 'user.png'),
+(6, 'amini', 3212345678912352, 'petugas', '$2y$10$SIUNsTMGwDOoXJ62kgoMueorXuuDenxdG0ZKRU1NUigM2Xby0bAmC', '081222222222', 'mentok', 'petugas', 'user.png');
 
 -- --------------------------------------------------------
 
