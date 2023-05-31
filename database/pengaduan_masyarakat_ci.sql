@@ -1,14 +1,13 @@
 -- phpMyAdmin SQL Dump
--- version 5.0.1
+-- version 5.1.2
 -- https://www.phpmyadmin.net/
 --
--- Host: localhost
--- Generation Time: May 30, 2023 at 11:18 AM
--- Server version: 10.4.11-MariaDB
--- PHP Version: 7.4.1
+-- Host: localhost:3306
+-- Generation Time: May 31, 2023 at 03:14 AM
+-- Server version: 5.7.33
+-- PHP Version: 7.4.19
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
-SET AUTOCOMMIT = 0;
 START TRANSACTION;
 SET time_zone = "+00:00";
 
@@ -60,15 +59,16 @@ CREATE TABLE `masyarakat` (
   `password` varchar(225) NOT NULL,
   `telp` varchar(13) NOT NULL,
   `alamat` varchar(35) NOT NULL,
-  `foto_profile` varchar(225) NOT NULL
+  `foto_profile` varchar(225) NOT NULL,
+  `is_verified` tinyint(1) NOT NULL DEFAULT '0'
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `masyarakat`
 --
 
-INSERT INTO `masyarakat` (`nik`, `nama`, `username`, `password`, `telp`, `alamat`, `foto_profile`) VALUES
-(1212345678912354, 'aisyah', 'masyarakat', '$2y$10$BqCVWU56ME/Y.MctVXBw7uI8w26d1gK/HY219JiQWe./ppfYVEeYS', '08131111111', 'pangkal', 'user.png');
+INSERT INTO `masyarakat` (`nik`, `nama`, `username`, `password`, `telp`, `alamat`, `foto_profile`, `is_verified`) VALUES
+(1212345678912354, 'aisyah', 'masyarakat', '$2y$10$BqCVWU56ME/Y.MctVXBw7uI8w26d1gK/HY219JiQWe./ppfYVEeYS', '08131111111', 'pangkal', 'user.png', 1);
 
 -- --------------------------------------------------------
 

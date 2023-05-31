@@ -37,6 +37,14 @@ class LoginController extends CI_Controller {
 		$petugas = $this->db->get_where('petugas',['username' => $username])->row_array();
 
 		if ($masyarakat == TRUE) :
+			if (! $masyarakat['is_verified']) :
+				// jika akun masyakarat belum di verifikasi admin
+				// redirect to login page
+				$this->session->set_flashdata('msg', '<div class="alert alert-danger" role="alert"> Akun belum terverifikasi </div>');
+				
+				return redirect('Auth/LoginController');
+			endif;
+
 			// jika akun masyarakat == TRUE
 			// cek password
 			if (password_verify($password, $masyarakat['password'])) :
