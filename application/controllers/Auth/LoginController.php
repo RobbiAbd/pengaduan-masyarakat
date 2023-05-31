@@ -41,6 +41,7 @@ class LoginController extends CI_Controller {
 				// jika akun masyakarat belum di verifikasi admin
 				// redirect to login page
 				$this->session->set_flashdata('msg', '<div class="alert alert-danger" role="alert"> Akun belum terverifikasi </div>');
+				
 				return redirect('Auth/LoginController');
 			endif;
 
