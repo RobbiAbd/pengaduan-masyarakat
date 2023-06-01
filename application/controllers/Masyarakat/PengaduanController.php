@@ -26,6 +26,7 @@ class PengaduanController extends CI_Controller {
 
     $this->form_validation->set_rules('isi_laporan','Isi Laporan Pengaduan','trim|required');
     $this->form_validation->set_rules('foto','Foto Pengaduan','trim');
+    $this->form_validation->set_rules('kabupaten', "Kabupaten", 'trim|required');
 
     if ($this->form_validation->run() == FALSE) :
       $this->load->view('_part/backend_head', $data);
@@ -49,10 +50,11 @@ class PengaduanController extends CI_Controller {
           'nik'             => $masyarakat['nik'],
           'hubungan'        => htmlspecialchars($this->input->post('hubungan',true)),
           'lokasi_kejadian' => htmlspecialchars($this->input->post('lokasi_kejadian',true)),
-          'nama_korban' => htmlspecialchars($this->input->post('nama_korban',true)),
-          'nama_pelaku' => htmlspecialchars($this->input->post('nama_pelaku',true)),
-          'jenis_laporan' => htmlspecialchars($this->input->post('jenis_laporan',true)),
+          'nama_korban'     => htmlspecialchars($this->input->post('nama_korban',true)),
+          'nama_pelaku'     => htmlspecialchars($this->input->post('nama_pelaku',true)),
+          'jenis_laporan'   => htmlspecialchars($this->input->post('jenis_laporan',true)),
           'isi_laporan'     => htmlspecialchars($this->input->post('isi_laporan',true)),
+          'id_kabupaten'    => htmlspecialchars($this->input->post('kabupaten', true)),
           'foto'            => $upload_foto,
           'status'          => 'Diajukan',
         ];

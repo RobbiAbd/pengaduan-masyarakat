@@ -63,9 +63,10 @@ class Pengaduan_m extends CI_Model {
 
 	public function data_pengaduan_tanggapan($id)
 	{
-		$this->db->select('pengaduan.*,tanggapan.tgl_tanggapan,tanggapan.tanggapan');
+		$this->db->select('pengaduan.*,tanggapan.tgl_tanggapan,tanggapan.tanggapan, kabupaten.nama as nama_kabupaten');
 		$this->db->from($this->table);
 		$this->db->join('tanggapan', 'tanggapan.id_pengaduan = pengaduan.id_pengaduan', 'inner');
+		$this->db->join('kabupaten', 'kabupaten.id = pengaduan.id_kabupaten', 'inner');
 		$this->db->where('pengaduan.id_pengaduan', $id);
 		return $this->db->get();
 	}
