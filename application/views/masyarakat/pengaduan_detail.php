@@ -28,6 +28,7 @@
             Nama Korban : <span class="text-dark"><?= $data_pengaduan['nama_korban'] ?></span><br>
             Hub dgn Korban : <span class="text-dark"><?= $data_pengaduan['hubungan'] ?></span><br>
             Lokasi Kejadian : <span class="text-dark"><?= $data_pengaduan['lokasi_kejadian'] ?></span><br>
+            Kabupaten : <span class="text-dark"><?= $data_pengaduan['nama_kabupaten'] ?></span><br>
             Jenis Laporan : <span class="text-dark"><?= $data_pengaduan['jenis_laporan'] ?></span><br>
             Kronologi : <span class="text-dark"><?= $data_pengaduan['isi_laporan'] ?></span><br>
           </p>

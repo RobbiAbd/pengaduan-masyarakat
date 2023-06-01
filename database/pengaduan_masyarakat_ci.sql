@@ -87,7 +87,8 @@ CREATE TABLE `pengaduan` (
   `jenis_laporan` varchar(35) NOT NULL,
   `isi_laporan` text NOT NULL,
   `foto` varchar(255) NOT NULL,
-  `status` enum('Diajukan','Diproses','Selesai','Ditolak') NOT NULL
+  `status` enum('Diajukan','Diproses','Selesai','Ditolak') NOT NULL,
+  `id_kabupaten` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
@@ -233,6 +234,12 @@ ALTER TABLE `tanggapan`
 --
 -- Constraints for dumped tables
 --
+
+--
+-- Constraints for table `pengaduan`
+--
+ALTER TABLE `pengaduan`
+  ADD CONSTRAINT `pengaduan_ibfk_1` FOREIGN KEY (`id_kabupaten`) REFERENCES `kabupaten` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
 -- Constraints for table `petugas_kabupaten`

@@ -11,7 +11,9 @@ class PengaduanController extends CI_Controller {
     if ( ! empty($this->session->userdata('level'))) :
       redirect('Auth/BlockedController');
     endif;
+
     $this->load->model('Pengaduan_m');
+    $this->load->model('Kabupaten_m');
   }
 
   // List all your items
@@ -20,9 +22,11 @@ class PengaduanController extends CI_Controller {
     $data['title'] = 'Pengaduan';
     $masyarakat = $this->db->get_where('masyarakat',['username' => $this->session->userdata('username')])->row_array();
     $data['data_pengaduan'] = $this->Pengaduan_m->data_pengaduan_masyarakat_nik($masyarakat['nik'])->result_array();
+    $data['data_kabupaten'] = $this->Kabupaten_m->get_all()->result_array();
 
     $this->form_validation->set_rules('isi_laporan','Isi Laporan Pengaduan','trim|required');
     $this->form_validation->set_rules('foto','Foto Pengaduan','trim');
+    $this->form_validation->set_rules('kabupaten', "Kabupaten", 'trim|required');
 
     if ($this->form_validation->run() == FALSE) :
       $this->load->view('_part/backend_head', $data);
@@ -46,10 +50,11 @@ class PengaduanController extends CI_Controller {
           'nik'             => $masyarakat['nik'],
           'hubungan'        => htmlspecialchars($this->input->post('hubungan',true)),
           'lokasi_kejadian' => htmlspecialchars($this->input->post('lokasi_kejadian',true)),
-          'nama_korban' => htmlspecialchars($this->input->post('nama_korban',true)),
-          'nama_pelaku' => htmlspecialchars($this->input->post('nama_pelaku',true)),
-          'jenis_laporan' => htmlspecialchars($this->input->post('jenis_laporan',true)),
+          'nama_korban'     => htmlspecialchars($this->input->post('nama_korban',true)),
+          'nama_pelaku'     => htmlspecialchars($this->input->post('nama_pelaku',true)),
+          'jenis_laporan'   => htmlspecialchars($this->input->post('jenis_laporan',true)),
           'isi_laporan'     => htmlspecialchars($this->input->post('isi_laporan',true)),
+          'id_kabupaten'    => htmlspecialchars($this->input->post('kabupaten', true)),
           'foto'            => $upload_foto,
           'status'          => 'Diajukan',
         ];
