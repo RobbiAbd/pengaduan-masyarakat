@@ -180,8 +180,7 @@ class PengaduanController extends CI_Controller {
           $this->load->view('_part/backend_footer_v');
           $this->load->view('_part/backend_foot');
         else :
-
-          $upload_foto = $this->upload_foto('foto'); // parameter nama foto
+          $upload_foto = empty($_FILES['foto']['name']) ? $cek_data['foto'] : $this->upload_foto('foto');
 
           if ($upload_foto == FALSE) :
             $this->session->set_flashdata('msg','<div class="alert alert-danger" role="alert">
@@ -192,8 +191,10 @@ class PengaduanController extends CI_Controller {
           else :
 
             // hapus file
+          if (!empty($_FILES['foto']['name'])) :
             $path = './assets/uploads/'.$cek_data['foto'];
             unlink($path);
+          endif;
 
             $params = [
               'hubungan'        => htmlspecialchars($this->input->post('hubungan',true)),
