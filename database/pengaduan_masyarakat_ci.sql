@@ -27,6 +27,7 @@ SET time_zone = "+00:00";
 -- Table structure for table `kabupaten`
 --
 
+DROP TABLE IF EXISTS `kabupaten`;
 CREATE TABLE `kabupaten` (
   `id` int(11) NOT NULL,
   `nama` varchar(255) NOT NULL,
@@ -37,6 +38,8 @@ CREATE TABLE `kabupaten` (
 -- Dumping data for table `kabupaten`
 --
 
+
+LOCK TABLES `kabupaten` WRITE;
 INSERT INTO `kabupaten` (`id`, `nama`, `ibukota`) VALUES
 (1, 'Bangka', 'Sungai Liat'),
 (2, 'Bangka Barat', 'Muntok'),
@@ -45,6 +48,7 @@ INSERT INTO `kabupaten` (`id`, `nama`, `ibukota`) VALUES
 (5, 'Belitung', 'Tanjung Pandan'),
 (6, 'Belitung Timur', 'Manggar'),
 (7, 'Pangkal Pinang', 'Pangkal Pinang');
+UNLOCK TABLES;
 
 -- --------------------------------------------------------
 
@@ -52,6 +56,7 @@ INSERT INTO `kabupaten` (`id`, `nama`, `ibukota`) VALUES
 -- Table structure for table `masyarakat`
 --
 
+DROP TABLE IF EXISTS `masyarakat`;
 CREATE TABLE `masyarakat` (
   `nik` bigint(16) NOT NULL,
   `nama` varchar(35) NOT NULL,
@@ -68,9 +73,11 @@ CREATE TABLE `masyarakat` (
 -- Dumping data for table `masyarakat`
 --
 
+LOCK TABLES `masyarakat` WRITE;
 INSERT INTO `masyarakat` (`nik`, `nama`, `username`, `password`, `telp`, `alamat`, `foto_profile`, `is_verified`) VALUES
 (12345678918,'lulu','lululala','$2y$10$J23NNXSjscUHCEHXDkSaTOvbm8gQYRVmMtdqCGPQyJuFeuMfS.hJG','08111111111','PKG','user.png',1),
 (1212345678912354,'aisyah','masyarakat','$2y$10$BqCVWU56ME/Y.MctVXBw7uI8w26d1gK/HY219JiQWe./ppfYVEeYS','08131111111','pangkal','user.png',1);
+UNLOCK TABLES;
 
 -- --------------------------------------------------------
 
@@ -78,6 +85,7 @@ INSERT INTO `masyarakat` (`nik`, `nama`, `username`, `password`, `telp`, `alamat
 -- Table structure for table `pengaduan`
 --
 
+DROP TABLE IF EXISTS `pengaduan`;
 CREATE TABLE `pengaduan` (
   `id_pengaduan` bigint(16) NOT NULL,
   `tgl_pengaduan` date NOT NULL,
@@ -105,12 +113,14 @@ INSERT INTO `pengaduan` VALUES
 (12,'2023-01-26',1212345678912354,'Sodara','Amir','Palembang','Riri','Pelecehan Seksual','Pelaku memukul korban menggunakan tauge','f158381b96b131e019fd1d6f3d9da57e.jpg','Diproses',7),
 (15,'2023-01-26',1212345678912354,'kawan','Tedjo','bekasi','suasana','Kekerasan Dalam Rumah Tangga','lupa makan','c84e4069757743fa8f35c29a74c0d2b2.jpg','Diproses',6),
 (16,'2023-02-14',1212345678912354,'Teman','Budi','Pantai','Raya','Kekerasan Dalam Rumah Tangga','Tidak memberikan izin tinggal','d8695e60c4c69842e4209cbde61a4ced.jpg','Diajukan',5);
+UNLOCK TABLES;
 -- --------------------------------------------------------
 
 --
 -- Table structure for table `petugas`
 --
 
+DROP TABLE IF EXISTS `petugas`;
 CREATE TABLE `petugas` (
   `id_petugas` int(11) NOT NULL,
   `nama` varchar(35) NOT NULL,
@@ -129,9 +139,11 @@ CREATE TABLE `petugas` (
 -- Dumping data for table `petugas`
 --
 
+LOCK TABLES `petugas` WRITE;
 INSERT INTO `petugas` (`id_petugas`, `nama`, `nik`, `username`, `password`, `telp`, `alamat`, `level`, `foto_profile`) VALUES
 (2, 'putri', 3212345678912354, 'admin', '$2y$10$YlpZmz2Uq.RxG5bHvMjYjej5y2AYkEzr9JbDKGHe3sWbpFkVhkury', '08111111111', 'belitong', 'admin', 'user.png'),
 (6, 'amini', 3212345678912352, 'petugas', '$2y$10$SIUNsTMGwDOoXJ62kgoMueorXuuDenxdG0ZKRU1NUigM2Xby0bAmC', '081222222222', 'mentok', 'petugas', 'user.png');
+UNLOCK TABLES;
 
 -- --------------------------------------------------------
 
@@ -139,6 +151,7 @@ INSERT INTO `petugas` (`id_petugas`, `nama`, `nik`, `username`, `password`, `tel
 -- Table structure for table `petugas_kabupaten`
 --
 
+DROP TABLE IF EXISTS `petugas_kabupaten`;
 CREATE TABLE `petugas_kabupaten` (
   `id` int(11) NOT NULL,
   `petugas_id` int(11) NOT NULL,
@@ -153,9 +166,11 @@ CREATE TABLE `petugas_kabupaten` (
 -- Dumping data for table `petugas_kabupaten`
 --
 
+LOCK TABLES `petugas_kabupaten` WRITE;
 INSERT INTO `petugas_kabupaten` (`id`, `petugas_id`, `kabupaten_id`) VALUES
 (1, 2, 5),
 (2, 6, 7);
+UNLOCK TABLES;
 
 -- --------------------------------------------------------
 
@@ -163,6 +178,7 @@ INSERT INTO `petugas_kabupaten` (`id`, `petugas_id`, `kabupaten_id`) VALUES
 -- Table structure for table `tanggapan`
 --
 
+DROP TABLE IF EXISTS `tanggapan`;
 CREATE TABLE `tanggapan` (
   `id_tanggapan` int(11) NOT NULL,
   `id_pengaduan` bigint(16) NOT NULL,
@@ -179,7 +195,12 @@ CREATE TABLE `tanggapan` (
 --
 
 /*!40000 ALTER TABLE `tanggapan` DISABLE KEYS */;
-INSERT INTO `tanggapan` VALUES (19,10,'2023-01-11','oke konfirm',6),(20,15,'2023-02-14','sedang didalami',6),(21,12,'2023-02-14','Sedang dalam proses',6);
+LOCK TABLES `tanggapan` WRITE;
+INSERT INTO `tanggapan` VALUES 
+(19,10,'2023-01-11','oke konfirm',6),
+(20,15,'2023-02-14','sedang didalami',6),
+(21,12,'2023-02-14','Sedang dalam proses',6);
+UNLOCK TABLES;
 
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 
