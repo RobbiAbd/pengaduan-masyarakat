@@ -1,27 +1,19 @@
--- phpMyAdmin SQL Dump
--- version 5.1.2
--- https://www.phpmyadmin.net/
+-- MySQL dump 10.19  Distrib 10.3.38-MariaDB, for debian-linux-gnu (x86_64)
 --
--- Host: localhost:3306
--- Generation Time: May 31, 2023 at 03:14 AM
--- Server version: 5.7.33
--- PHP Version: 7.4.19
-
-SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
-START TRANSACTION;
-SET time_zone = "+00:00";
-
+-- Host: localhost    Database: pengaduan_masyarakat_ci
+-- ------------------------------------------------------
+-- Server version       10.3.38-MariaDB-0ubuntu0.20.04.1
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
 /*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
 /*!40101 SET NAMES utf8mb4 */;
-
---
--- Database: `pengaduan_masyarakat_ci`
---
-
--- --------------------------------------------------------
+/*!40103 SET @OLD_TIME_ZONE=@@TIME_ZONE */;
+/*!40103 SET TIME_ZONE='+00:00' */;
+/*!40014 SET @OLD_UNIQUE_CHECKS=@@UNIQUE_CHECKS, UNIQUE_CHECKS=0 */;
+/*!40014 SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0 */;
+/*!40101 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='NO_AUTO_VALUE_ON_ZERO' */;
+/*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 
 --
 -- Table structure for table `kabupaten`
@@ -155,11 +147,7 @@ DROP TABLE IF EXISTS `petugas_kabupaten`;
 CREATE TABLE `petugas_kabupaten` (
   `id` int(11) NOT NULL,
   `petugas_id` int(11) NOT NULL,
-  `kabupaten_id` int(11) NOT NULL,
-  KEY `petugas_kabupaten_ibfk_1` (`petugas_id`),
-  KEY `petugas_kabupaten_ibfk_2` (`kabupaten_id`),
-  CONSTRAINT `petugas_kabupaten_ibfk_1` FOREIGN KEY (`petugas_id`) REFERENCES `petugas` (`id_petugas`) ON DELETE CASCADE ON UPDATE CASCADE,
-  CONSTRAINT `petugas_kabupaten_ibfk_2` FOREIGN KEY (`kabupaten_id`) REFERENCES `kabupaten` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
+  `kabupaten_id` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
