@@ -11,12 +11,14 @@ class Pengaduan_m extends CI_Model {
 		return $this->db->insert($this->table, $data);
 	}
 
-	public function data_pengaduan()
+	public function data_pengaduan($id_kabupaten = NULL)
 	{
 		$this->db->select('pengaduan.*,masyarakat.nama,masyarakat.telp');
 		$this->db->from($this->table);
 		$this->db->join('masyarakat', 'masyarakat.nik = pengaduan.nik', 'inner');
 		$this->db->where('status', 'Diajukan');
+		if($id_kabupaten) $this->db->where('id_kabupaten', $id_kabupaten);
+
 		return $this->db->get();
 	}
 
@@ -29,30 +31,36 @@ class Pengaduan_m extends CI_Model {
 		return $this->db->get();
 	}
 
-	public function data_pengaduan_masyarakat_proses()
+	public function data_pengaduan_masyarakat_proses($id_kabupaten = NULL)
 	{
 		$this->db->select('pengaduan.*,masyarakat.nama,masyarakat.telp');
 		$this->db->from($this->table);
 		$this->db->join('masyarakat', 'masyarakat.nik = pengaduan.nik', 'inner');
 		$this->db->where('status', 'Diproses');
+		if($id_kabupaten) $this->db->where('id_kabupaten', $id_kabupaten);
+
 		return $this->db->get();
 	}
 
-	public function data_pengaduan_masyarakat_selesai()
+	public function data_pengaduan_masyarakat_selesai($id_kabupaten = NULL)
 	{
 		$this->db->select('pengaduan.*,masyarakat.nama,masyarakat.telp');
 		$this->db->from($this->table);
 		$this->db->join('masyarakat', 'masyarakat.nik = pengaduan.nik', 'inner');
 		$this->db->where('status', 'Selesai');
+		if($id_kabupaten) $this->db->where('id_kabupaten', $id_kabupaten);
+
 		return $this->db->get();
 	}
 
-	public function data_pengaduan_masyarakat_tolak()
+	public function data_pengaduan_masyarakat_tolak($id_kabupaten = NULL)
 	{
 		$this->db->select('pengaduan.*,masyarakat.nama,masyarakat.telp');
 		$this->db->from($this->table);
 		$this->db->join('masyarakat', 'masyarakat.nik = pengaduan.nik', 'inner');
 		$this->db->where('status', 'Ditolak');
+		if($id_kabupaten) $this->db->where('id_kabupaten', $id_kabupaten);
+
 		return $this->db->get();
 	}
 
