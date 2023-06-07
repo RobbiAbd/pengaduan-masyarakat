@@ -19,8 +19,10 @@ class TanggapanController extends CI_Controller {
 	// List all your items
 	public function index()
 	{
+		$id_kabupaten = $this->id_kabupaten();
+
 		$data['title'] = 'Semua Pengaduan';
-		$data['data_pengaduan'] = $this->Pengaduan_m->data_pengaduan()->result_array();
+		$data['data_pengaduan'] = $this->Pengaduan_m->data_pengaduan($id_kabupaten)->result_array();
 
 		$this->load->view('_part/backend_head', $data);
 		$this->load->view('_part/backend_sidebar_v');
@@ -32,9 +34,12 @@ class TanggapanController extends CI_Controller {
 
 	public function tanggapan_detail()
 	{
-		$id = htmlspecialchars($this->input->post('id',true)); // id pengaduan
+		$id 	  		   = htmlspecialchars($this->input->post('id',true)); // id pengaduan
+		$cek_data 		   = $this->db->get_where('pengaduan',['id_pengaduan' => $id])->row_array();
+		$petugas_kabupaten = $this->id_kabupaten();
+		$level 			   = $this->session->userdata('level');
 
-		$cek_data = $this->db->get_where('pengaduan',['id_pengaduan' => $id])->row_array();
+		if ($petugas_kabupaten != $cek_data['id_kabupaten'] && $level != 'admin') redirect('Auth/BlockedController');
 
 		if ( ! empty($cek_data)) :
 
@@ -59,8 +64,10 @@ class TanggapanController extends CI_Controller {
 
 	public function tanggapan_proses()
 	{
+		$id_kabupaten = $this->id_kabupaten();
+
 		$data['title'] = 'Pengaduan Proses';
-		$data['data_pengaduan'] = $this->Pengaduan_m->data_pengaduan_masyarakat_proses()->result_array();
+		$data['data_pengaduan'] = $this->Pengaduan_m->data_pengaduan_masyarakat_proses($id_kabupaten)->result_array();
 
 		$this->load->view('_part/backend_head', $data);
 		$this->load->view('_part/backend_sidebar_v');
@@ -72,8 +79,11 @@ class TanggapanController extends CI_Controller {
 
 	public function tanggapan_selesai()
 	{
+
+		$id_kabupaten = $this->id_kabupaten();
+
 		$data['title'] = 'Pengaduan Selesai Dikerjakan';
-		$data['data_pengaduan'] = $this->Pengaduan_m->data_pengaduan_masyarakat_selesai()->result_array();
+		$data['data_pengaduan'] = $this->Pengaduan_m->data_pengaduan_masyarakat_selesai($id_kabupaten)->result_array();
 
 		$this->load->view('_part/backend_head', $data);
 		$this->load->view('_part/backend_sidebar_v');
@@ -85,8 +95,11 @@ class TanggapanController extends CI_Controller {
 
 	public function tanggapan_tolak()
 	{
+
+		$id_kabupaten = $this->id_kabupaten();
+
 		$data['title'] = 'Pengaduan Ditolak';
-		$data['data_pengaduan'] = $this->Pengaduan_m->data_pengaduan_masyarakat_tolak()->result_array();
+		$data['data_pengaduan'] = $this->Pengaduan_m->data_pengaduan_masyarakat_tolak($id_kabupaten)->result_array();
 
 		$this->load->view('_part/backend_head', $data);
 		$this->load->view('_part/backend_sidebar_v');
@@ -99,8 +112,10 @@ class TanggapanController extends CI_Controller {
 
 	public function tanggapan_pengaduan_selesai()
 	{
+		$id_kabupaten = $this->id_kabupaten();
+		$level 		  = $this->session->userdata('level');
 		$id_pengaduan = htmlspecialchars($this->input->post('id',true));
-		$cek_data = $this->db->get_where('pengaduan',['id_pengaduan' => $id_pengaduan])->row_array();
+		$cek_data	  = $this->db->get_where('pengaduan',['id_pengaduan' => $id_pengaduan])->row_array();
 		
 		if ( ! empty($cek_data)) :
 
@@ -109,7 +124,7 @@ class TanggapanController extends CI_Controller {
 			if ($this->form_validation->run() == FALSE) :
 
 				$data['title'] = 'Pengaduan Proses';
-				$data['data_pengaduan'] = $this->Pengaduan_m->data_pengaduan_masyarakat_proses()->result_array();
+				$data['data_pengaduan'] = $this->Pengaduan_m->data_pengaduan_masyarakat_proses($id_kabupaten)->result_array();
 
 				$this->load->view('_part/backend_head', $data);
 				$this->load->view('_part/backend_sidebar_v');
@@ -123,6 +138,8 @@ class TanggapanController extends CI_Controller {
 				$params = [
 					'status' => 'selesai',
 				];
+
+				if ($id_kabupaten != $cek_data['id_kabupaten'] && $level != 'admin') redirect('Auth/BlockedController');
 
 				$update_status_pengaduan = $this->db->update('pengaduan',$params,['id_pengaduan' =>  $id_pengaduan]);
 
@@ -154,8 +171,12 @@ class TanggapanController extends CI_Controller {
 
 	public function tambah_tanggapan()
 	{
-		$id_pengaduan = htmlspecialchars($this->input->post('id',true));
-		$cek_data = $this->db->get_where('pengaduan',['id_pengaduan' => $id_pengaduan])->row_array();
+		$id_pengaduan 	   = htmlspecialchars($this->input->post('id',true));
+		$cek_data          = $this->db->get_where('pengaduan',['id_pengaduan' => $id_pengaduan])->row_array();
+		$level 		  	   = $this->session->userdata('level');
+		$petugas_kabupaten = $this->id_kabupaten();
+
+		if ($petugas_kabupaten != $cek_data['id_kabupaten'] && $level != 'admin') redirect('Auth/BlockedController');
 
 		if ( ! empty($cek_data)) :
 
@@ -232,6 +253,18 @@ class TanggapanController extends CI_Controller {
 
 			redirect('Admin/TanggapanController');	
 		endif;
+	}
+
+	private function id_kabupaten() 
+	{
+		$username     = $this->session->userdata('username');
+		$level 	  	  = $this->session->userdata('level');
+		$id_petugas   = $this->Petugas_m->get_petugas_by_username($username)->row()->id_petugas;
+		$id_kabupaten = NULL;
+
+		if($level == 'petugas') $id_kabupaten =  $this->Petugas_m->get_petugas_kabupaten($id_petugas)->row()->kabupaten_id;
+
+		return $id_kabupaten;
 	}
 }
 

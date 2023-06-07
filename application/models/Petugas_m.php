@@ -11,6 +11,16 @@ class Petugas_m extends CI_Model {
 		return $this->db->insert($this->table, $data);
 	}	
 
+	public function get_petugas_by_username($username)
+	{
+		return $this->db->get_where('petugas', ['username' => $username]);
+	}
+
+	public function get_petugas_kabupaten($id) 
+	{
+		return $this->db->get_where('petugas_kabupaten', ['petugas_id' => $id]);
+	}
+
 }
 
 /* End of file Petugas_m.php */
