@@ -78,21 +78,21 @@
     'normal' => $fontDir . '/DejaVuSerif',
   ),
   'font awesome 5 brands' => array(
-    'normal' => $fontDir . '/font-awesome-5-brands-normal_1c3041c7bbcfed47bb43aab165520eca',
+    'normal' => $fontDir . '/font-awesome-5-brands-normal_e1390d7a0df74b4f693bac0a1a6a30e8',
   ),
   'font awesome 5 free' => array(
-    'normal' => $fontDir . '/font-awesome-5-free-normal_97bc7c5c818b3cdda7bf15ec5336aa53',
-    '900' => $fontDir . '/font-awesome-5-free-900_a08ab83565c4de5d79d59aedcd3aa57b',
+    'normal' => $fontDir . '/font-awesome-5-free-normal_cab0ab0698152a517dab901096dc0761',
+    '900' => $fontDir . '/font-awesome-5-free-900_2d07698e67e9736dd0e2fbd43e0b5228',
   ),
   'lora' => array(
-    'bold' => $fontDir . '/lora-bold_5c4f3953864918999edeab78c9a26d74',
+    'bold' => $fontDir . '/lora-bold_48b4871b15205f2a9f98081a48317d1c',
   ),
   'montserrat' => array(
-    '200' => $fontDir . '/montserrat-200_fe06cbe26dfc5791bb132d533d709117',
-    'normal' => $fontDir . '/montserrat-normal_99765fdb334a0a22a804b94acf422542',
-    '600' => $fontDir . '/montserrat-600_b32f6a3d38bb2e32d00557491439ece4',
+    '200' => $fontDir . '/montserrat-200_27b0fcc67a452d3936cd659e738e48bf',
+    'normal' => $fontDir . '/montserrat-normal_0a82c580487c3ab5fee63e7f9b60f3f3',
+    '600' => $fontDir . '/montserrat-600_78ffe211b9c1a9ecc54d176954a2889f',
   ),
   'pacifico' => array(
-    'normal' => $fontDir . '/pacifico-normal_28ae8f8f0f60d3d7c402b41244ff6f12',
+    'normal' => $fontDir . '/pacifico-normal_51c0b6c3950b30257bbfb559b6d1317a',
   ),
 ) ?>

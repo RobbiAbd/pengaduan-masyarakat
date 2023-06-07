@@ -1,7 +1,8 @@
 <?php
-defined('BASEPATH') OR exit('No direct script access allowed');
+defined('BASEPATH') or exit('No direct script access allowed');
 
-class Pengaduan_m extends CI_Model {
+class Pengaduan_m extends CI_Model
+{
 
 	private $table = 'pengaduan';
 	private $primary_key = 'id_pengaduan';
@@ -58,7 +59,7 @@ class Pengaduan_m extends CI_Model {
 
 	public function data_pengaduan_masyarakat_id($id)
 	{
-		return $this->db->get_where($this->table,['id_pengaduan' => $id]);
+		return $this->db->get_where($this->table, ['id_pengaduan' => $id]);
 	}
 
 	public function data_pengaduan_tanggapan($id)
@@ -73,12 +74,16 @@ class Pengaduan_m extends CI_Model {
 
 	public function laporan_pengaduan()
 	{
-	$this->db->select('pengaduan.*, masyarakat.nama, masyarakat.telp, tanggapan.tgl_tanggapan, tanggapan.tanggapan, petugas.nama');
-	$this->db->from('pengaduan');
-	$this->db->join('masyarakat','masyarakat.nik = pengaduan.nik','left');
-	$this->db->join('tanggapan','tanggapan.id_pengaduan = pengaduan.id_pengaduan','left');
-	$this->db->join('petugas','petugas.id_petugas = tanggapan.id_petugas','left');
-	return $this->db->get();
+		$this->db->select(
+			'pengaduan.nama_korban, pengaduan.tgl_pengaduan, pengaduan.jenis_laporan, pengaduan.lokasi_kejadian,
+			pengaduan.isi_laporan, pengaduan.status, tanggapan.tanggapan, kabupaten.nama as nama_kabupaten'
+		);
+		$this->db->from('pengaduan');
+		$this->db->join('tanggapan', 'tanggapan.id_pengaduan = pengaduan.id_pengaduan', 'left');
+		$this->db->join('kabupaten', 'kabupaten.id = pengaduan.id_kabupaten');
+		// $this->db->join('masyarakat','masyarakat.nik = pengaduan.nik','left');
+		// $this->db->join('petugas','petugas.id_petugas = tanggapan.id_petugas','left');
+		return $this->db->get();
 	}
 }
 
