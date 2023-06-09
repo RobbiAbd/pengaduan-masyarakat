@@ -8,7 +8,8 @@ class Petugas_m extends CI_Model {
 
 	public function create($data)
 	{
-		return $this->db->insert($this->table, $data);
+		$this->db->insert($this->table, $data);
+        return $this->db->insert_id();
 	}	
 
 	public function get_petugas_by_username($username)

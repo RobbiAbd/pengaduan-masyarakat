@@ -12,19 +12,26 @@ class PetugasController extends CI_Controller {
 			redirect('Auth/BlockedController');
 		endif;
 		$this->load->model('Petugas_m');
+		$this->load->model('Kabupaten_m');
+		$this->load->model('PetugasKabupaten_m');
 	}
 
 	// List all your items
 	public function index()
 	{
-		$data['title'] = 'Tambah Petugas';
-		$data['data_petugas'] = $this->db->get('petugas')->result_array();
+		$data['title'] 	        = 'Tambah Petugas';
+		$data['data_petugas']   = $this->db->get('petugas')->result_array();
+		$data['data_kabupaten'] = $this->Kabupaten_m->get_all()->result_array();
 
 		$this->form_validation->set_rules('nama','Nama','trim|required|alpha_numeric_spaces');
 		$this->form_validation->set_rules('username','Username','trim|required|alpha_numeric_spaces|callback_username_check');
 		$this->form_validation->set_rules('password','Password','trim|required|alpha_numeric_spaces|min_length[6]|max_length[15]');
 		$this->form_validation->set_rules('telp','Telp','trim|required|numeric');
 		$this->form_validation->set_rules('level','Level','trim|required');
+
+		if (htmlspecialchars($this->input->post('level', TRUE)) == 'petugas') :
+			$this->form_validation->set_rules('kabupaten', 'Kabupaten', 'trim|required');
+		endif;
 
 		if ($this->form_validation->run() == FALSE) :
 			$this->load->view('_part/backend_head', $data);
@@ -35,7 +42,7 @@ class PetugasController extends CI_Controller {
 			$this->load->view('_part/backend_foot');
 		else :
 			$params = [
-				'nama_petugas'			=> htmlspecialchars($this->input->post('nama',TRUE)),
+				'nama'					=> htmlspecialchars($this->input->post('nama',TRUE)),
 				'username'				=> htmlspecialchars($this->input->post('username',TRUE)),
 				'password'				=> password_hash(htmlspecialchars($this->input->post('password',TRUE)), PASSWORD_DEFAULT),
 				'telp'					=> htmlspecialchars($this->input->post('telp',TRUE)),
@@ -43,9 +50,18 @@ class PetugasController extends CI_Controller {
 				'foto_profile'			=> 'user.png',
 			];
 
-			$resp = $this->Petugas_m->create($params);
+			$response = $this->Petugas_m->create($params);
 
-			if ($resp) :
+			if ($response) :
+				if (htmlspecialchars($this->input->post('level', TRUE)) == 'petugas') :
+					$kabupaten = htmlspecialchars($this->input->post('kabupaten', TRUE));
+
+					$petugas_kabupaten = $this->PetugasKabupaten_m->create([
+						'kabupaten_id' => $kabupaten,
+						'petugas_id' => $response
+					]);
+				endif;
+
 				$this->session->set_flashdata('msg','<div class="alert alert-primary" role="alert">
 					Buat akun petugas berhasil
 					</div>');
@@ -65,11 +81,13 @@ class PetugasController extends CI_Controller {
 	{
 
 	$id_petugas = htmlspecialchars($id); // id petugas
-
-	$cek_data = $this->db->get_where('petugas',['id_petugas' => $id_petugas])->row_array();
+	$cek_data 	= $this->db->get_where('petugas',['id_petugas' => $id_petugas])->row_array();
 	
 	if ( ! empty($cek_data)) :
 		$resp = $this->db->delete('petugas',['id_petugas' => $id_petugas]);
+		if ($cek_data['level'] == 'petugas'):
+			$this->db->delete('petugas_kabupaten', ['petugas_id' => $id_petugas]);
+		endif;
 
 		if ($resp) :
 			$this->session->set_flashdata('msg','<div class="alert alert-primary" role="alert">
@@ -119,7 +137,7 @@ public function edit($id)
 			else :
 
 			$params = [
-				'nama_petugas'			=> htmlspecialchars($this->input->post('nama',TRUE)),
+				'nama'					=> htmlspecialchars($this->input->post('nama',TRUE)),
 				'telp'					=> htmlspecialchars($this->input->post('telp',TRUE)),
 				'level'					=> htmlspecialchars($this->input->post('level',TRUE)),
 			];
@@ -155,8 +173,7 @@ public function edit($id)
 	{
 		if (!empty($str)) :
 			$masyarakat = $this->db->get_where('masyarakat',['username' => $str])->row_array();
-
-			$petugas = $this->db->get_where('petugas',['username' => $str])->row_array();
+			$petugas 	= $this->db->get_where('petugas',['username' => $str])->row_array();
 
 			if ($masyarakat == true || $petugas == true) :
 
