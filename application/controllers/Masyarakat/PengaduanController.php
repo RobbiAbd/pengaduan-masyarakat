@@ -14,6 +14,7 @@ class PengaduanController extends CI_Controller {
 
     $this->load->model('Pengaduan_m');
     $this->load->model('Kabupaten_m');
+    $this->load->model('Bukti_m');
   }
 
   // List all your items
@@ -25,7 +26,7 @@ class PengaduanController extends CI_Controller {
     $data['data_kabupaten'] = $this->Kabupaten_m->get_all()->result_array();
 
     $this->form_validation->set_rules('isi_laporan','Isi Laporan Pengaduan','trim|required');
-    $this->form_validation->set_rules('foto','Foto Pengaduan','trim');
+    $this->form_validation->set_rules('foto','Foto Pengaduan','trim|required');
     $this->form_validation->set_rules('kabupaten', "Kabupaten", 'trim|required');
 
     if ($this->form_validation->run() == FALSE) :
@@ -55,13 +56,16 @@ class PengaduanController extends CI_Controller {
           'jenis_laporan'   => htmlspecialchars($this->input->post('jenis_laporan',true)),
           'isi_laporan'     => htmlspecialchars($this->input->post('isi_laporan',true)),
           'id_kabupaten'    => htmlspecialchars($this->input->post('kabupaten', true)),
-          'foto'            => $upload_foto,
-          'status'          => 'Diajukan',
+          'status'          => 'Diajukan'
         ];
 
         $resp = $this->Pengaduan_m->create($params);
 
         if ($resp) :
+          $this->Bukti_m->create([
+            'path' => $upload_foto,
+            'id_pengaduan' => $resp
+          ]);
           $this->session->set_flashdata('msg','<div class="alert alert-primary" role="alert">
             Laporan berhasil dibuat
             </div>');
@@ -116,6 +120,7 @@ class PengaduanController extends CI_Controller {
   public function pengaduan_batal($id)
   {
     $cek_data = $this->db->get_where('pengaduan',['id_pengaduan' => htmlspecialchars($id)])->row_array();
+    $bukti = $this->db->get_where('bukti', ['id_pengaduan' => htmlspecialchars($id)])->row_array();
 
     if ( ! empty($cek_data)) :
 
@@ -124,10 +129,11 @@ class PengaduanController extends CI_Controller {
         $resp = $this->db->delete('pengaduan',['id_pengaduan' => $id]);
 
         // hapus file
-        $path = './assets/uploads/'.$cek_data['foto'];
+        $path = './assets/uploads/'.$bukti['foto'];
         unlink($path);
 
         if ($resp) :
+          $this->db->delete('bukti', ['id' => $bukti['id']]);
           $this->session->set_flashdata('msg','<div class="alert alert-primary" role="alert">
             Hapus pengaduan berhasil
             </div>');
@@ -161,6 +167,7 @@ class PengaduanController extends CI_Controller {
   public function edit($id)
   {
     $cek_data = $this->db->get_where('pengaduan',['id_pengaduan' => htmlspecialchars($id)])->row_array();
+    $bukti = $this->db->get_where('bukti', ['id_pengaduan' => htmlspecialchars($id)])->row_array();
 
     if ( ! empty($cek_data)) :
 
@@ -180,7 +187,7 @@ class PengaduanController extends CI_Controller {
           $this->load->view('_part/backend_footer_v');
           $this->load->view('_part/backend_foot');
         else :
-          $upload_foto = empty($_FILES['foto']['name']) ? $cek_data['foto'] : $this->upload_foto('foto');
+          $upload_foto = empty($_FILES['foto']['name']) ? $bukti['path'] : $this->upload_foto('foto');
 
           if ($upload_foto == FALSE) :
             $this->session->set_flashdata('msg','<div class="alert alert-danger" role="alert">
@@ -192,7 +199,9 @@ class PengaduanController extends CI_Controller {
 
             // hapus file
           if (!empty($_FILES['foto']['name'])) :
-            $path = './assets/uploads/'.$cek_data['foto'];
+            $this->db->update('bukti', ['path' => $upload_foto], ['id' => $bukti['id']]);
+
+            $path = './assets/uploads/'.$bukti['foto'];
             unlink($path);
           endif;
 
@@ -201,8 +210,7 @@ class PengaduanController extends CI_Controller {
               'lokasi_kejadian' => htmlspecialchars($this->input->post('lokasi_kejadian',true)),
               'nama_korban' => htmlspecialchars($this->input->post('nama_korban',true)),
               'nama_pelaku' => htmlspecialchars($this->input->post('nama_pelaku',true)),
-              'isi_laporan'   => htmlspecialchars($this->input->post('isi_laporan',true)),
-              'foto'        => $upload_foto,
+              'isi_laporan'   => htmlspecialchars($this->input->post('isi_laporan',true))
             ];
 
             $resp = $this->db->update('pengaduan',$params,['id_pengaduan' => $id]);;
