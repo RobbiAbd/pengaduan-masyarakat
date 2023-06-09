@@ -9,7 +9,9 @@
       <div class="sidebar-brand-icon rotate-n-15">
         <!-- <i class="fas fa-laugh-wink"></i> -->
       </div>
-      <div class="sidebar-brand-text mx-3">Sistem Informasi Pelayanan Kekerasan Perempuan dan Anak</div>
+      <div class="sidebar-brand-text mx-3">
+        <img src="<?= base_url() ?>assets/backend/img/bangka_belitung.png" alt="logo provinsi bangka belitung" height="125">
+      </div>
     </a>
     
     <?php if ($this->session->userdata('level') == 'admin' OR $this->session->userdata('level') == 'petugas') : ?>
