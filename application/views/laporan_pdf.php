@@ -114,11 +114,11 @@ function getCurrentDate()
 
       <div class="d-flex flex-row bg-primary text-right">
         <div class="ml-auto">
-          <h4>Kepala Dinas Provinsi Bangka Belitung</h4>
+          <span>Kepala Dinas <br>Provinsi Bangka Belitung </span>
           <br>
           <br>
           <br>
-          <h4>Nama Kepala Dinas <br>NIP: </h4>
+          <span>Nama Kepala Dinas <br>NIP: 190150128573650312</span>
         </div>
       </div>
 
