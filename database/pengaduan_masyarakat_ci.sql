@@ -193,9 +193,42 @@ INSERT INTO `tanggapan` (`id_tanggapan`, `id_pengaduan`, `tgl_tanggapan`, `tangg
 (21, 12, '2023-02-14', 'Sedang dalam proses', 6),
 (26, 26, '2023-06-09', 'kurang lengkap', 2);
 
+
+-- Table structure for table `masyarakat_detail`
+--
+
+CREATE TABLE `masyarakat_detail` (
+  `id` bigint NOT NULL,
+  `nama` varchar(35) NOT NULL,
+  `telp` varchar(13) NOT NULL,
+  `alamat` varchar(35) NOT NULL,
+  `foto_profile` varchar(225) NOT NULL,
+  `id_masyarakat` bigint NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
+--
+-- Dumping data for table `masyarakat_detail`
+--
+
+INSERT INTO `masyarakat_detail` (`id`, `nama`, `telp`, `alamat`, `foto_profile`, `id_masyarakat`) VALUES
+(1, 'aisyah', '08131111111', 'pangkal', 'user.png', 1212345678912354), 
+(2, 'lulu', '08111111111', 'PKG', 'user.png', 12345678918);
+
+ALTER TABLE `masyarakat` DROP COLUMN `nama`;
+ALTER TABLE `masyarakat` DROP COLUMN `telp`;
+ALTER TABLE `masyarakat` DROP COLUMN `alamat`;
+ALTER TABLE `masyarakat` DROP COLUMN `foto_profile`;
+
 --
 -- Indexes for dumped tables
 --
+
+--
+-- Indexes for table `masyarakat_detail`
+--
+ALTER TABLE `masyarakat_detail`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `id_masyarakat` (`id_masyarakat`);
 
 --
 -- Indexes for table `bukti`
@@ -247,6 +280,13 @@ ALTER TABLE `tanggapan`
 --
 -- AUTO_INCREMENT for dumped tables
 --
+
+--
+-- AUTO_INCREMENT for table `masyarakat`
+--
+
+ALTER TABLE `masyarakat_detail`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- AUTO_INCREMENT for table `bukti`
