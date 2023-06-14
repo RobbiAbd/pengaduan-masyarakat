@@ -204,7 +204,7 @@ CREATE TABLE `masyarakat_detail` (
   `alamat` varchar(35) NOT NULL,
   `foto_profile` varchar(225) NOT NULL,
   `id_masyarakat` bigint NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `masyarakat_detail`
