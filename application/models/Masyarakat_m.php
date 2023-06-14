@@ -8,7 +8,30 @@ class Masyarakat_m extends CI_Model {
 	
 	public function create($data)
 	{
-		return $this->db->insert($this->table, $data);;
+		$data_masyarakat = array(
+			'nik' => $data['nik'],
+			'username' => $data['username'],
+			'password' => $data['password']
+		);
+
+		$save_masyarakat = $this->db->insert('masyarakat', $data_masyarakat);
+
+		if(!$save_masyarakat) {
+			return false;
+		}
+
+		$masyarakat_id = $this->db->insert_id();
+		$detail_masyarakat = array(
+			'nama' => $data['nama'],
+			'telp' => $data['telp'],
+			'alamat' => $data['alamat'],
+			'foto_profile' => $data['foto_profile'],
+			'id_masyarakat' => $masyarakat_id
+		);
+
+		$save_detail_masyarakat = $this->db->insert('masyarakat_detail', $detail_masyarakat);
+
+		return $save_detail_masyarakat;
 	}
 }
 
