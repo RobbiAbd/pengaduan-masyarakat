@@ -40,7 +40,7 @@ class PengaduanController extends CI_Controller {
       $upload_foto = $this->upload_foto('foto'); // parameter nama foto
       if ($upload_foto == FALSE) :
         $this->session->set_flashdata('msg','<div class="alert alert-danger" role="alert">
-          Upload foto pengaduan gagal, hanya png,jpg dan jpeg yang dapat di upload!
+          Bukti harus diisi dan hanya file png, mp4, jpg dan jpeg yang dapat di upload!
           </div>');
 
         redirect('Masyarakat/PengaduanController');
