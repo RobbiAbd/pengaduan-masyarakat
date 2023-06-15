@@ -252,9 +252,9 @@ class PengaduanController extends CI_Controller {
 
   private function upload_foto($foto)
   {
+    $config['max_size']             = $_FILES['foto']['type'] == 'video/mp4' ? 25000 : 2048;
     $config['upload_path']          = './assets/uploads/';
     $config['allowed_types']        = 'jpeg|jpg|png';
-    $config['max_size']             = 2048;
     $config['remove_spaces']        = TRUE;
     $config['detect_mime']          = TRUE;
     $config['mod_mime_fix']         = TRUE;
