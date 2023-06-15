@@ -26,7 +26,6 @@ class PengaduanController extends CI_Controller {
     $data['data_kabupaten'] = $this->Kabupaten_m->get_all()->result_array();
 
     $this->form_validation->set_rules('isi_laporan','Isi Laporan Pengaduan','trim|required');
-    $this->form_validation->set_rules('foto','Foto Pengaduan','trim|required');
     $this->form_validation->set_rules('kabupaten', "Kabupaten", 'trim|required');
 
     if ($this->form_validation->run() == FALSE) :
@@ -38,10 +37,9 @@ class PengaduanController extends CI_Controller {
       $this->load->view('_part/backend_foot');
     else :
       $upload_foto = $this->upload_foto('foto'); // parameter nama foto
-      if ($upload_foto == FALSE) :
-        $this->session->set_flashdata('msg','<div class="alert alert-danger" role="alert">
-          Bukti harus diisi dan hanya file png, mp4, jpg dan jpeg yang dapat di upload!
-          </div>');
+
+      if ($upload_foto['status'] == FALSE) :
+        $this->session->set_flashdata('msg','<div class="alert alert-danger" role="alert">' . $upload_foto['foto'] . '</div>');
 
         redirect('Masyarakat/PengaduanController');
       else :
@@ -63,7 +61,7 @@ class PengaduanController extends CI_Controller {
 
         if ($resp) :
           $this->Bukti_m->create([
-            'path' => $upload_foto,
+            'path' => $upload_foto['foto'],
             'id_pengaduan' => $resp
           ]);
           $this->session->set_flashdata('msg','<div class="alert alert-primary" role="alert">
@@ -189,17 +187,15 @@ class PengaduanController extends CI_Controller {
         else :
           $upload_foto = empty($_FILES['foto']['name']) ? $bukti['path'] : $this->upload_foto('foto');
 
-          if ($upload_foto == FALSE) :
-            $this->session->set_flashdata('msg','<div class="alert alert-danger" role="alert">
-              Upload foto pengaduan gagal, hanya png,jpg dan jpeg yang dapat di upload!
-              </div>');
+          if ($upload_foto['status'] == FALSE) :
+            $this->session->set_flashdata('msg','<div class="alert alert-danger" role="alert">' . $upload_foto['foto'] . '</div>');
 
             redirect('Masyarakat/PengaduanController');
           else :
 
             // hapus file
           if (!empty($_FILES['foto']['name'])) :
-            $this->db->update('bukti', ['path' => $upload_foto], ['id' => $bukti['id']]);
+            $this->db->update('bukti', ['path' => $upload_foto['foto']], ['id' => $bukti['id']]);
 
             $path = './assets/uploads/'.$bukti['foto'];
             unlink($path);
@@ -252,9 +248,9 @@ class PengaduanController extends CI_Controller {
 
   private function upload_foto($foto)
   {
+    $config['max_size']             = $_FILES['foto']['type'] == 'video/mp4' ? 25000 : 2048;
     $config['upload_path']          = './assets/uploads/';
     $config['allowed_types']        = 'jpeg|jpg|png';
-    $config['max_size']             = 2048;
     $config['remove_spaces']        = TRUE;
     $config['detect_mime']          = TRUE;
     $config['mod_mime_fix']         = TRUE;
@@ -263,9 +259,9 @@ class PengaduanController extends CI_Controller {
     $this->load->library('upload', $config);
 
     if ( ! $this->upload->do_upload($foto)) :
-      return FALSE;
+      return ['status' => FALSE, 'foto' => $this->upload->display_errors()];
     else :
-      return $this->upload->data('file_name');
+      return ['status' => TRUE, 'foto' => $this->upload->data('file_name')];
     endif;
   }
 }
