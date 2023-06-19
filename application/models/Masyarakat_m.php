@@ -33,6 +33,14 @@ class Masyarakat_m extends CI_Model {
 
 		return $save_detail_masyarakat;
 	}
+
+	public function get_all() {
+		$this->db->select('masyarakat.nik, masyarakat_detail.nama, masyarakat.username, masyarakat_detail.telp, masyarakat.is_verified');
+		$this->db->from($this->table);
+		$this->db->join('masyarakat_detail', 'masyarakat_detail.id_masyarakat = masyarakat.nik', 'inner');
+
+		return $this->db->get();
+	}
 }
 
 /* End of file Masyarakat_m.php */
