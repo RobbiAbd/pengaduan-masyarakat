@@ -15,8 +15,8 @@ class MasyarakatController extends CI_Controller {
 	}
 
     public function index() {
-        $data['title'] = "Konfirmasi Akun Masyarakat";
-        $data['data_masyarakat'] = $this->db->get('masyarakat')->result_array();
+        $data['title']           = "Konfirmasi Akun Masyarakat";
+        $data['data_masyarakat'] = $this->Masyarakat_m->get_all()->result_array();
 
         $this->load->view('_part/backend_head', $data);
 		$this->load->view('_part/backend_sidebar_v');
