@@ -22,6 +22,8 @@
 						<span class="text-dark">Laporan :</span> <p><?= $dp['isi_laporan'] ?></p>
 						<span class="text-dark">Telp :</span> <p><?= $dp['telp'] ?></p>
 						<span class="text-dark">Tgl Pengaduan :</span> <p><?= $dp['tgl_pengaduan'] ?></p>
+						<span class="text-dark">Jenis Pengaduan: </span> <p><?= $dp['jenis_laporan'] ?></p>
+						<span class="text-dark">Lokasi: </span> <p><?= $dp['lokasi_kejadian'] ?></p>
 					</div>
 					<div class="text-center mb-2">
 						<div class="">
