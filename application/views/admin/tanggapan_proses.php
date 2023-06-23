@@ -17,7 +17,7 @@
 					<div class="card-header py-3">
 						<h6 class="m-0 font-weight-bold text-primary"><?= $dp['nama'] ?></h6>
 					</div>
-					<img height="150" src="<?= base_url() ?>assets/uploads/<?= $dp['foto'] ?>" class="card-img-top">
+					<img src="<?= base_url() ?>assets/uploads/<?= $dp['foto'] ?>" class="card-img-top" alt="Thumbnail Pengaduan">
 					<div class="card-body">
 						<span class="text-dark">Laporan :</span> <p><?= $dp['isi_laporan'] ?></p>
 						<span class="text-dark">Telp :</span> <p><?= $dp['telp'] ?></p>
