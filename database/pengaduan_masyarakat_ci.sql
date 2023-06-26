@@ -111,7 +111,7 @@ CREATE TABLE `masyarakat_detail` (
   `id_masyarakat` bigint(20) NOT NULL,
   PRIMARY KEY (`id`),
   KEY `id_masyarakat` (`id_masyarakat`)
-) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=latin1;;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=latin1;;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -146,7 +146,7 @@ CREATE TABLE `pengaduan` (
   `id_kabupaten` int(11) NOT NULL,
   PRIMARY KEY (`id_pengaduan`),
   KEY `nik` (`nik`)
-) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=28 DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `pengaduan`
@@ -154,15 +154,17 @@ CREATE TABLE `pengaduan` (
 
 LOCK TABLES `pengaduan` WRITE;
 INSERT INTO `pengaduan` VALUES 
-(12,'2023-01-26',1212345678912354,'Sodara','Amir','Palembang','Riri','Pelecehan Seksual','Pelaku memukul korban menggunakan tauge','f158381b96b131e019fd1d6f3d9da57e.jpg','Selesai',7),
-(15,'2023-01-26',1212345678912354,'kawan','Tedjo','bekasi','suasana','Kekerasan Dalam Rumah Tangga','lupa makan','c84e4069757743fa8f35c29a74c0d2b2.jpg','Diproses',6),
-(16,'2023-02-14',1212345678912354,'Teman','Budi','Pantai','Raya','Kekerasan Dalam Rumah Tangga','Tidak memberikan izin tinggal','d8695e60c4c69842e4209cbde61a4ced.jpg','Diproses',5),
-(18,'2023-06-17',12345678918,'Tetangga','Susanto','Jalan Pramuka','Agus','Kekerasan Dalam Rumah Tangga','pencemaran nama baik','','Diajukan',7),(21,'2023-06-19',1212345678912354,'teman','Budi Sentosa','Pantai Kuta','Charel','Kekerasan Dalam Rumah Tangga','Pemukulan sepihak','','Diajukan',7),
-(22,'2023-06-19',1212345678912354,'teman','Budi Sentosa','Jl. Assalam','Charel','Kekerasan Dalam Rumah Tangga','asdf','','Selesai',7),
-(23,'2023-06-19',1212345678912354,'teman','Budi Sentosa','Jl. Assalam','Saleh','Kekerasan Dalam Rumah Tangga','asdf','','Ditolak',7),(24,'2023-06-19',331301117223,'teman','Budi Sentosa Wijaya','Jl. Assalam','Charel Adi','Kekerasan Dalam Rumah Tangga','pelaku memukul korban dengan tongkat baseball','','Diajukan',4),
-(25,'2023-06-19',331301117223,'teman','Budi Sentosa Wijaya','Jl. Assalam','Charel Adi','Kekerasan Dalam Rumah Tangga','Pemukulan sepulang sekolah','','Diajukan',2),
-(26,'2023-06-19',331301117223,'teman','Dimas','klaten','Kates','Hak Asuh Anak','Kates dipukul oleh dimas','','Diajukan',2),
-(27,'2023-06-19',1212345678912354,'teman','Budi Sentosa','Jl. Assalam','Charel Adi','Kekerasan Dalam Rumah Tangga','Charel dipukul ditempat','','Ditolak',1);
+(12,'2023-01-26',1212345678912354,'Sodara','Amir','Palembang','Riri','Pelecehan Seksual','Pelaku memukul korban menggunakan tauge','Selesai',7),
+(15,'2023-01-26',1212345678912354,'kawan','Tedjo','bekasi','suasana','Kekerasan Dalam Rumah Tangga','lupa makan','Diproses',6),
+(16,'2023-02-14',1212345678912354,'Teman','Budi','Pantai','Raya','Kekerasan Dalam Rumah Tangga','Tidak memberikan izin tinggal','Diproses',5),
+(18,'2023-06-17',12345678918,'Tetangga','Susanto','Jalan Pramuka','Agus','Kekerasan Dalam Rumah Tangga','pencemaran nama baik','Diajukan',7),
+(21,'2023-06-19',1212345678912354,'teman','Budi Sentosa','Pantai Kuta','Charel','Kekerasan Dalam Rumah Tangga','Pemukulan sepihak','Diajukan',7),
+(22,'2023-06-19',1212345678912354,'teman','Budi Sentosa','Jl. Assalam','Charel','Kekerasan Dalam Rumah Tangga','asdf','Selesai',7),
+(23,'2023-06-19',1212345678912354,'teman','Budi Sentosa','Jl. Assalam','Saleh','Kekerasan Dalam Rumah Tangga','asdf','Ditolak',7),
+(24,'2023-06-19',331301117223,'teman','Budi Sentosa Wijaya','Jl. Assalam','Charel Adi','Kekerasan Dalam Rumah Tangga','pelaku memukul korban dengan tongkat baseball','Diajukan',4),
+(25,'2023-06-19',331301117223,'teman','Budi Sentosa Wijaya','Jl. Assalam','Charel Adi','Kekerasan Dalam Rumah Tangga','Pemukulan sepulang sekolah','Diajukan',2),
+(26,'2023-06-19',331301117223,'teman','Dimas','klaten','Kates','Hak Asuh Anak','Kates dipukul oleh dimas','Diajukan',2),
+(27,'2023-06-19',1212345678912354,'teman','Budi Sentosa','Jl. Assalam','Charel Adi','Kekerasan Dalam Rumah Tangga','Charel dipukul ditempat','Ditolak',1);
 /*!40000 ALTER TABLE `pengaduan` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -183,7 +185,7 @@ CREATE TABLE `petugas` (
   `foto_profile` varchar(225) NOT NULL,
   PRIMARY KEY (`id_petugas`),
   UNIQUE KEY `username` (`username`)
-) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `petugas`
@@ -234,7 +236,7 @@ CREATE TABLE `tanggapan` (
   PRIMARY KEY (`id_tanggapan`),
   KEY `id_pengaduan` (`id_pengaduan`),
   KEY `id_petugas` (`id_petugas`)
-) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=26 DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `tanggapan`
