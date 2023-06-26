@@ -111,7 +111,7 @@ CREATE TABLE `masyarakat_detail` (
   `id_masyarakat` bigint(20) NOT NULL,
   PRIMARY KEY (`id`),
   KEY `id_masyarakat` (`id_masyarakat`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;;
+) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=latin1;;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -142,12 +142,11 @@ CREATE TABLE `pengaduan` (
   `nama_korban` varchar(35) NOT NULL,
   `jenis_laporan` varchar(35) NOT NULL,
   `isi_laporan` text NOT NULL,
-  `foto` varchar(255) NOT NULL,
   `status` enum('Diajukan','Diproses','Selesai','Ditolak') NOT NULL,
   `id_kabupaten` int(11) NOT NULL,
   PRIMARY KEY (`id_pengaduan`),
   KEY `nik` (`nik`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `pengaduan`
@@ -184,7 +183,7 @@ CREATE TABLE `petugas` (
   `foto_profile` varchar(225) NOT NULL,
   PRIMARY KEY (`id_petugas`),
   UNIQUE KEY `username` (`username`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `petugas`
@@ -235,7 +234,7 @@ CREATE TABLE `tanggapan` (
   PRIMARY KEY (`id_tanggapan`),
   KEY `id_pengaduan` (`id_pengaduan`),
   KEY `id_petugas` (`id_petugas`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `tanggapan`
