@@ -15,11 +15,12 @@ class Pengaduan_m extends CI_Model
 
 	public function data_pengaduan($id_kabupaten = NULL)
 	{
-		$this->db->select('pengaduan.*, masyarakat_detail.nama, masyarakat_detail.telp, bukti.path as foto');
+		$this->db->select('pengaduan.*, masyarakat_detail.nama, masyarakat_detail.telp, bukti.path as foto, kabupaten.nama as kabupaten');
 		$this->db->from($this->table);
 		$this->db->join('masyarakat', 'masyarakat.nik = pengaduan.nik', 'inner');
 		$this->db->join('bukti', 'bukti.id_pengaduan = pengaduan.id_pengaduan', 'inner');
 		$this->db->join('masyarakat_detail', 'masyarakat_detail.id_masyarakat = masyarakat.nik', 'inner');
+		$this->db->join('kabupaten', 'kabupaten.id = pengaduan.id_kabupaten');
 		$this->db->where('status', 'Diajukan');
 		if($id_kabupaten) $this->db->where('id_kabupaten', $id_kabupaten);
 
