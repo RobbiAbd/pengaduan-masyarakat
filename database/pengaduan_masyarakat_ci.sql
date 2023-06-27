@@ -209,7 +209,7 @@ CREATE TABLE `petugas_kabupaten` (
   `kabupaten_id` int(11) NOT NULL,
   KEY `petugas_kabupaten_ibfk_1` (`petugas_id`),
   KEY `petugas_kabupaten_ibfk_2` (`kabupaten_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `petugas_kabupaten`
@@ -217,9 +217,8 @@ CREATE TABLE `petugas_kabupaten` (
 
 LOCK TABLES `petugas_kabupaten` WRITE;
 INSERT INTO `petugas_kabupaten` (`id`, `petugas_id`, `kabupaten_id`) VALUES
-(1, 2, 5),
 (2, 6, 7),
-(0, 7, 1);
+(3, 7, 1);
 UNLOCK TABLES;
 
 --
