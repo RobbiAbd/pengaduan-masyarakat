@@ -20,7 +20,7 @@ class PetugasController extends CI_Controller {
 	public function index()
 	{
 		$data['title'] 	        = 'Tambah Petugas';
-		$data['data_petugas']   = $this->db->get('petugas')->result_array();
+		$data['data_petugas']   = $this->Petugas_m->get_all_petugas()->result_array();
 		$data['data_kabupaten'] = $this->Kabupaten_m->get_all()->result_array();
 
 		$this->form_validation->set_rules('nama','Nama','trim|required|alpha_numeric_spaces');
