@@ -69,6 +69,7 @@
       <th scope="col">#</th>
       <th scope="col">Nama</th>
       <th scope="col">Telp</th>
+      <th scope="col">Kabupaten</th>
       <th scope="col">Level</th>
       <th scope="col">Aksi</th>
     </tr>
@@ -80,6 +81,13 @@
         <th scope="row"><?= $no++; ?></th>
         <td><?= $dp['nama']; ?></td>
         <td><?= $dp['telp']; ?></td>
+        <td>
+          <?php if ($dp['kabupaten'] == NULL) : ?>
+            Tidak Ada
+          <?php else: ?>
+            <?= $dp['kabupaten'] ?>
+          <?php endif; ?>
+        </td>
         <td><?= $dp['level']; ?></td>
         <td>
         <?php if ($dp['username'] == $this->session->userdata('username')) : ?>
