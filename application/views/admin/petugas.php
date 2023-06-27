@@ -68,6 +68,7 @@
     <tr>
       <th scope="col">#</th>
       <th scope="col">Nama</th>
+      <th scope="col">Username</th>
       <th scope="col">Telp</th>
       <th scope="col">Kabupaten</th>
       <th scope="col">Level</th>
@@ -80,6 +81,7 @@
       <tr>
         <th scope="row"><?= $no++; ?></th>
         <td><?= $dp['nama']; ?></td>
+        <td><?= $dp['username']; ?></td>
         <td><?= $dp['telp']; ?></td>
         <td>
           <?php if ($dp['kabupaten'] == NULL) : ?>
