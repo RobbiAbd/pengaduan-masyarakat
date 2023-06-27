@@ -73,8 +73,11 @@ function getCurrentDate()
 
       <!-- Page Heading -->
       <div class="text-center">
-        <h1 class="h4 text-dark">Laporan Pengaduan Masyarakat</h1>
-        <h1 class="h4 text-dark">Provinsi Bangka Belitung</h1>
+        <h1 class="h4 text-dark">Laporan Pengaduan Kekerasan Dinas Pemberdayaan</h1>
+        <h1 class="h4 text-dark">Perempuan Perlindungan Anak, Administrasi</h1>
+        <h1 class="h4 text-dark">Kependudukan Pencatatan Sipil dan Pengendalian</h1>
+        <h1 class="h4 text-dark">Penduduk Keluarga Berencana Provinsi Kepulauan</h1>
+        <h1 class="h4 text-dark">Bangka Belitung</h1>
         <h1 class="h4 text-dark"><?= getCurrentDate(); ?></h1>
       </div>
 
@@ -118,7 +121,7 @@ function getCurrentDate()
           <br>
           <br>
           <br>
-          <span>Nama Kepala Dinas <br>NIP: 190150128573650312</span>
+          <span>Dr. Asyraf Suryadin, M.Pd <br>NIP: 19660504 199512 1 002</span>
         </div>
       </div>
 
