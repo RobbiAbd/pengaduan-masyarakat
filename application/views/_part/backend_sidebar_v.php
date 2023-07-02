@@ -109,7 +109,7 @@
   
 
   <?php // generate laporan akses admin ?>
-  <?php if ($this->session->userdata('level') == 'admin') : ?>
+  <?php if ($this->session->userdata('level') == 'admin' || $this->session->userdata('level') == 'petugas') : ?>
   <!-- Nav Item - Generate Laporan -->
   <li class="nav-item">
     <a class="nav-link" href="<?= base_url('Admin/LaporanController'); ?>">
