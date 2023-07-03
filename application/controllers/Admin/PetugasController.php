@@ -115,17 +115,21 @@ class PetugasController extends CI_Controller {
 public function edit($id)
 {
 		$id_petugas = htmlspecialchars($id); // id petugas
-
-		$cek_data = $this->db->get_where('petugas',['id_petugas' => $id_petugas])->row_array();
+		$cek_data   = $this->db->get_where('petugas',['id_petugas' => $id_petugas])->row_array();
 
 		if ( ! empty($cek_data)) :
 
-			$data['title'] = 'Edit Petugas';
-			$data['petugas'] = $cek_data;
+			$data['title']          = 'Edit Petugas';
+			$data['petugas']        = $cek_data;
+			$data['data_kabupaten'] = $this->Kabupaten_m->get_all()->result_array();
 
 			$this->form_validation->set_rules('nama','Nama','trim|required|alpha_numeric_spaces');
 			$this->form_validation->set_rules('telp','Telp','trim|required|numeric');
 			$this->form_validation->set_rules('level','Level','trim|required');
+
+			if (htmlspecialchars($this->input->post('level', TRUE)) == 'petugas') :
+				$this->form_validation->set_rules('kabupaten', 'Kabupaten', 'trim|required');
+			endif;
 
 			if ($this->form_validation->run() == FALSE) :
 				$this->load->view('_part/backend_head', $data);
@@ -137,12 +141,14 @@ public function edit($id)
 			else :
 
 			$params = [
-				'nama'					=> htmlspecialchars($this->input->post('nama',TRUE)),
-				'telp'					=> htmlspecialchars($this->input->post('telp',TRUE)),
-				'level'					=> htmlspecialchars($this->input->post('level',TRUE)),
+				'id'        => $id_petugas,
+				'nama'		=> htmlspecialchars($this->input->post('nama', TRUE)),
+				'telp'		=> htmlspecialchars($this->input->post('telp', TRUE)),
+				'level'		=> htmlspecialchars($this->input->post('level', TRUE)),
+				'kabupaten' => htmlspecialchars($this->input->post('kabupaten', TRUE)),       
 			];
 
-			$resp = $this->db->update('petugas',$params, ['id_petugas' => $id_petugas]);
+			$resp = $this->Petugas_m->update($params);
 
 			if ($resp) :
 				$this->session->set_flashdata('msg','<div class="alert alert-primary" role="alert">
