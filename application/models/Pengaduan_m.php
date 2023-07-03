@@ -101,7 +101,7 @@ class Pengaduan_m extends CI_Model
 		return $this->db->get();
 	}
 
-	public function laporan_pengaduan()
+	public function laporan_pengaduan($id_kabupaten)
 	{
 		$this->db->select(
 			'pengaduan.nama_korban, pengaduan.tgl_pengaduan, pengaduan.jenis_laporan, pengaduan.lokasi_kejadian,
@@ -110,6 +110,8 @@ class Pengaduan_m extends CI_Model
 		$this->db->from('pengaduan');
 		$this->db->join('tanggapan', 'tanggapan.id_pengaduan = pengaduan.id_pengaduan', 'left');
 		$this->db->join('kabupaten', 'kabupaten.id = pengaduan.id_kabupaten');
+		if ($id_kabupaten) $this->db->where('kabupaten.id', $id_kabupaten);
+		
 		// $this->db->join('masyarakat','masyarakat.nik = pengaduan.nik','left');
 		// $this->db->join('petugas','petugas.id_petugas = tanggapan.id_petugas','left');
 		return $this->db->get();
