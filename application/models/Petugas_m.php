@@ -57,7 +57,7 @@ class Petugas_m extends CI_Model {
 		];
 
 		if ( $petugas_kabupaten ) $this->db->update('petugas_kabupaten', $kabupaten_params, ['id' => $petugas_kabupaten['id']]);
-		if ( !$petugas_kabupaten ) $this->db->insert($kabupaten_params);
+		if ( !$petugas_kabupaten ) $this->db->insert('petugas_kabupaten', $kabupaten_params);
 	}
 
 }
