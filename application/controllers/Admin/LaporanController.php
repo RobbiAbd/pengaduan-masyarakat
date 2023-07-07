@@ -20,7 +20,7 @@ class LaporanController extends CI_Controller {
 	public function index()
 	{
 		$id_kabupaten    = $this->get_kabupaten_id();
-		$data['title']   = 'Generate Laporan';
+		$data['title']   = 'Cetak Laporan';
 		$data['laporan'] = $this->Pengaduan_m->laporan_pengaduan($id_kabupaten)->result_array();
 
 		$this->load->view('_part/backend_head', $data);

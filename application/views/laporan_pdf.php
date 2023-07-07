@@ -59,7 +59,8 @@ function getCurrentDate()
 
   <style>
     body {
-      font-family: Montserrat;
+      font-family: Helvetica;
+      font-size: 12px;
     }
   </style>
 
@@ -72,16 +73,14 @@ function getCurrentDate()
     <div class="">
 
       <!-- Page Heading -->
-      <div class="text-center">
-        <h1 class="h4 text-dark">Laporan Pengaduan Kekerasan Dinas Pemberdayaan</h1>
-        <h1 class="h4 text-dark">Perempuan Perlindungan Anak, Administrasi</h1>
-        <h1 class="h4 text-dark">Kependudukan Pencatatan Sipil dan Pengendalian</h1>
-        <h1 class="h4 text-dark">Penduduk Keluarga Berencana Provinsi Kepulauan</h1>
-        <h1 class="h4 text-dark">Bangka Belitung</h1>
-        <h1 class="h4 text-dark"><?= getCurrentDate(); ?></h1>
+      <div class="text-center text-dark">
+        <h4 style="font-size: 16px;">Laporan Pengaduan Kekerasan Dinas Pemberdayaan<br>
+        Perempuan Perlindungan Anak, Administrasi<br>
+        Kependudukan Pencatatan Sipil dan Pengendalian<br>
+        Penduduk Keluarga Berencana Provinsi Kepulauan<br>
+        Bangka Belitung</h4>
+        <h4 style="font-size: 15px;"><?= getCurrentDate(); ?></h4>
       </div>
-
-
 
       <table class="table mt-5">
         <thead class="thead-dark text-center justify-items-center">
@@ -115,9 +114,9 @@ function getCurrentDate()
         </tbody>
       </table>
 
-      <div class="d-flex flex-row bg-primary text-right">
-        <div class="ml-auto">
-          <span>Kepala Dinas <br>Provinsi Bangka Belitung </span>
+      <div class="d-flex flex-row bg-primary">
+        <div class="ml-auto text-center">
+          <span>Kepala Dinas</span>
           <br>
           <br>
           <br>

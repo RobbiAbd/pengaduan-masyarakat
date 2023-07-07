@@ -38,7 +38,7 @@
       </tbody>
     </table>
 
-    <a target="_blank" href="<?= base_url('Admin/LaporanController/generate_laporan') ?>" class="btn btn-primary mt-2">Preview or Download</a>
+    <a target="_blank" href="<?= base_url('Admin/LaporanController/generate_laporan') ?>" class="btn btn-primary mt-2">Cetak dan Unduh</a>
 
   <?php else : ?>
     <p class="text-center">Belum ada data</p>

@@ -108,16 +108,16 @@
   <?php // end dropdown admin hanya oleh akun admin dan petugas ?>
   
 
-  <?php // generate laporan akses admin ?>
+  <?php // Cetak Laporan akses admin ?>
   <?php if ($this->session->userdata('level') == 'admin' || $this->session->userdata('level') == 'petugas') : ?>
-  <!-- Nav Item - Generate Laporan -->
+  <!-- Nav Item - Cetak Laporan -->
   <li class="nav-item">
     <a class="nav-link" href="<?= base_url('Admin/LaporanController'); ?>">
       <i class="fas fa-file-pdf"></i>
-      <span>Generate Laporan</span></a>
+      <span>Cetak Laporan</span></a>
     </li>
   <?php endif; ?>
-  <?php // end generate laporan akses admin ?>
+  <?php // end Cetak Laporan akses admin ?>
 
     <!-- Nav Item - Logout -->
     <li class="nav-item">
