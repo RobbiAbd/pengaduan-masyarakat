@@ -4,7 +4,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 class Kabupaten_m extends CI_Model {
 
 	private $table = 'kabupaten';
-	private $primary_key = 'id';
+	private $primary_key = 'id_kabupaten';
 	
 	public function get_all() {
         $this->db->select('*');
