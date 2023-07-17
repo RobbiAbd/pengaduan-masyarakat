@@ -2,10 +2,23 @@
 -- version 5.1.2
 -- https://www.phpmyadmin.net/
 --
+<<<<<<< HEAD
+-- Host: localhost
+-- Generation Time: Jul 17, 2023 at 12:24 PM
+-- Server version: 10.4.11-MariaDB
+-- PHP Version: 7.4.1
+
+SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
+SET AUTOCOMMIT = 0;
+START TRANSACTION;
+SET time_zone = "+00:00";
+
+=======
 -- Host: localhost:3306
 -- Generation Time: Jun 09, 2023 at 09:13 AM
 -- Server version: 5.7.33
 -- PHP Version: 7.4.19
+>>>>>>> a6b71c47446dbc1e4b88bab4fd92cc78807f34da
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
@@ -103,6 +116,15 @@ DROP TABLE IF EXISTS `masyarakat_detail`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `masyarakat_detail` (
+<<<<<<< HEAD
+  `id_masyarakat` int(11) NOT NULL,
+  `nama_masyarakat` varchar(35) NOT NULL,
+  `telp` varchar(13) NOT NULL,
+  `alamat` varchar(35) NOT NULL,
+  `foto_profile` varchar(225) NOT NULL,
+  `nik` bigint(20) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+=======
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `nama` varchar(35) NOT NULL,
   `telp` varchar(13) NOT NULL,
@@ -113,16 +135,23 @@ CREATE TABLE `masyarakat_detail` (
   KEY `id_masyarakat` (`id_masyarakat`)
 ) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=latin1;;
 /*!40101 SET character_set_client = @saved_cs_client */;
+>>>>>>> a6b71c47446dbc1e4b88bab4fd92cc78807f34da
 
 --
 -- Dumping data for table `masyarakat_detail`
 --
 
+<<<<<<< HEAD
+INSERT INTO `masyarakat_detail` (`id_masyarakat`, `nama_masyarakat`, `telp`, `alamat`, `foto_profile`, `nik`) VALUES
+(1, 'aisyah', '08131111111', 'pangkal', 'user.png', 1212345678912354),
+(2, 'lulu', '08111111111', 'PKG', 'user.png', 12345678918);
+=======
 LOCK TABLES `masyarakat_detail` WRITE;
 INSERT INTO `masyarakat_detail` (`id`, `nama`, `telp`, `alamat`, `foto_profile`, `id_masyarakat`) VALUES
 (1,'aisyah','08131111111','pangkal','user.png',1212345678912354),
 (2,'lulu','08111111111','PKG','user.png',12345678918);
 UNLOCK TABLES;
+>>>>>>> a6b71c47446dbc1e4b88bab4fd92cc78807f34da
 
 
 --
@@ -244,6 +273,84 @@ CREATE TABLE `tanggapan` (
 
 LOCK TABLES `tanggapan` WRITE;
 INSERT INTO `tanggapan` (`id_tanggapan`, `id_pengaduan`, `tgl_tanggapan`, `tanggapan`, `id_petugas`) VALUES
+<<<<<<< HEAD
+(19, 10, '2023-01-11', 'oke konfirm', 6),
+(20, 15, '2023-02-14', 'sedang didalami', 6),
+(21, 12, '2023-02-14', 'Sedang dalam proses', 6),
+(22, 22, '2023-06-19', 'Baik akan kami proses', 6),
+(23, 23, '2023-06-19', 'Deskripsi kurang jelas.', 6),
+(24, 16, '2023-06-19', 'Diterima, pengaduan akan diproses', 2),
+(25, 27, '2023-06-19', 'Deskripsi kurang lengkap', 2);
+
+--
+-- Indexes for dumped tables
+--
+
+--
+-- Indexes for table `kabupaten`
+--
+ALTER TABLE `kabupaten`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `masyarakat`
+--
+ALTER TABLE `masyarakat`
+  ADD PRIMARY KEY (`nik`);
+
+--
+-- Indexes for table `masyarakat_detail`
+--
+ALTER TABLE `masyarakat_detail`
+  ADD PRIMARY KEY (`id_masyarakat`),
+  ADD KEY `id_masyarakat` (`nik`);
+
+--
+-- Indexes for table `pengaduan`
+--
+ALTER TABLE `pengaduan`
+  ADD PRIMARY KEY (`id_pengaduan`),
+  ADD KEY `nik` (`nik`);
+
+--
+-- Indexes for table `petugas`
+--
+ALTER TABLE `petugas`
+  ADD PRIMARY KEY (`id_petugas`),
+  ADD UNIQUE KEY `username` (`username_petugas`);
+
+--
+-- Indexes for table `petugas_kabupaten`
+--
+ALTER TABLE `petugas_kabupaten`
+  ADD KEY `petugas_kabupaten_ibfk_1` (`petugas_id`),
+  ADD KEY `petugas_kabupaten_ibfk_2` (`kabupaten_id`);
+
+--
+-- Indexes for table `tanggapan`
+--
+ALTER TABLE `tanggapan`
+  ADD PRIMARY KEY (`id_tanggapan`),
+  ADD KEY `id_pengaduan` (`id_pengaduan`),
+  ADD KEY `id_petugas` (`id_petugas`);
+
+--
+-- AUTO_INCREMENT for dumped tables
+--
+
+--
+-- AUTO_INCREMENT for table `masyarakat_detail`
+--
+ALTER TABLE `masyarakat_detail`
+  MODIFY `id_masyarakat` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+
+--
+-- AUTO_INCREMENT for table `pengaduan`
+--
+ALTER TABLE `pengaduan`
+  MODIFY `id_pengaduan` bigint(16) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=28;
+COMMIT;
+=======
 (19,10,'2023-01-11','oke konfirm',6),
 (20,15,'2023-02-14','sedang didalami',6),
 (21,12,'2023-02-14','Sedang dalam proses',6),
@@ -252,6 +359,7 @@ INSERT INTO `tanggapan` (`id_tanggapan`, `id_pengaduan`, `tgl_tanggapan`, `tangg
 (24,16,'2023-06-19','Diterima, pengaduan akan diproses',2),
 (25,27,'2023-06-19','Deskripsi kurang lengkap',2);
 UNLOCK TABLES;
+>>>>>>> a6b71c47446dbc1e4b88bab4fd92cc78807f34da
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;

@@ -61,7 +61,7 @@ class RegisterController extends CI_Controller {
 		if (!empty($str)) :
 			$masyarakat = $this->db->get_where('masyarakat',['username' => $str])->row_array();
 
-			$petugas = $this->db->get_where('petugas',['username' => $str])->row_array();
+			$petugas = $this->db->get_where('petugas',['username_petugas' => $str])->row_array();
 
 			if ($masyarakat == TRUE OR $petugas == TRUE) :
 

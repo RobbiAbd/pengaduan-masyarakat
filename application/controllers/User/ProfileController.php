@@ -18,7 +18,7 @@ class ProfileController extends CI_Controller {
         $masyarakat = $this->db->get_where('masyarakat',['username' => $this->session->userdata('username')])->row_array();
 		$detail_masyarakat = [];
 		if($masyarakat) {
-			$detail_masyarakat = $this->db->get_where('masyarakat_detail', ['id_masyarakat' => $masyarakat['nik']])->row_array();
+			$detail_masyarakat = $this->db->get_where('masyarakat_detail', ['nik' => $masyarakat['nik']])->row_array();
 			$masyarakat = array_merge($masyarakat, $detail_masyarakat);
 		}
 		$petugas = $this->db->get_where('petugas',['username_petugas' => $this->session->userdata('username')])->row_array();
