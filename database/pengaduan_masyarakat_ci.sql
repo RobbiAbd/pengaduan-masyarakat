@@ -175,10 +175,10 @@ UNLOCK TABLES;
 DROP TABLE IF EXISTS `petugas`;
 CREATE TABLE `petugas` (
   `id_petugas` int(11) NOT NULL,
-  `nama` varchar(35) NOT NULL,
-  `nik` bigint(16) NOT NULL,
-  `username` varchar(25) NOT NULL,
-  `password` varchar(225) NOT NULL,
+  `nama_petugas` varchar(35) NOT NULL,
+  `nik_petugas` bigint(16) NOT NULL,
+  `username_petugas` varchar(25) NOT NULL,
+  `password_petugas` varchar(225) NOT NULL,
   `telp` varchar(13) NOT NULL,
   `alamat` varchar(35) NOT NULL,
   `level` enum('admin','petugas') NOT NULL,
@@ -192,7 +192,7 @@ CREATE TABLE `petugas` (
 --
 
 LOCK TABLES `petugas` WRITE;
-INSERT INTO `petugas` (`id_petugas`, `nama`, `nik`, `username`, `password`, `telp`, `alamat`, `level`, `foto_profile`) VALUES
+INSERT INTO `petugas` (`id_petugas`, `nama_petugas`, `nik_petugas`, `username_petugas`, `password_petugas`, `telp`, `alamat`, `level`, `foto_profile`) VALUES
 (2, 'putri', 3212345678912354, 'admin', '$2y$10$YlpZmz2Uq.RxG5bHvMjYjej5y2AYkEzr9JbDKGHe3sWbpFkVhkury', '08111111111', 'belitong', 'admin', 'user.png'),
 (6, 'amini', 3212345678912352, 'petugas', '$2y$10$SIUNsTMGwDOoXJ62kgoMueorXuuDenxdG0ZKRU1NUigM2Xby0bAmC', '081222222222', 'mentok', 'petugas', 'user.png'),
 (7,'Darsono',0,'darson112','$2y$10$wIHKdPENug2c/.d0yIzYyO3SdsHv0gfBsfV2zQF0eatE1UbVYY49G','082138702811','','petugas','user.png');

@@ -14,7 +14,7 @@ class Petugas_m extends CI_Model {
 
 	public function get_petugas_by_username($username)
 	{
-		return $this->db->get_where('petugas', ['username' => $username]);
+		return $this->db->get_where('petugas', ['username_petugas' => $username]);
 	}
 
 	public function get_petugas_kabupaten($id) 

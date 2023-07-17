@@ -34,7 +34,7 @@ class LoginController extends CI_Controller {
 	{
 		// cek akun di table masyarakat dan petugas berdasarkan username
 		$masyarakat = $this->db->get_where('masyarakat',['username' => $username])->row_array();
-		$petugas = $this->db->get_where('petugas',['username' => $username])->row_array();
+		$petugas = $this->db->get_where('petugas',['username_petugas' => $username])->row_array();
 
 		if ($masyarakat == TRUE) :
 			if (! $masyarakat['is_verified']) :
@@ -75,11 +75,11 @@ class LoginController extends CI_Controller {
 			// jika akun petugas == TRUE
 			// cek password
 
-			if (password_verify($password, $petugas['password'])) :
+			if (password_verify($password, $petugas['password_petugas'])) :
 				// jika password benar
 				// maka buat session userdata
 				$session = [
-					'username' 		=> $petugas['username'],
+					'username' 		=> $petugas['username_petugas'],
 					'level'			=> $petugas['level'],
 				];
 
