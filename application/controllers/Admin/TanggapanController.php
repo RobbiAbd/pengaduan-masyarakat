@@ -204,7 +204,7 @@ class TanggapanController extends CI_Controller {
 					'id_pengaduan'		=> $id_pengaduan,
 					'tgl_tanggapan'		=> date('Y-m-d'),
 					'tanggapan'			=> htmlspecialchars($this->input->post('tanggapan',true)),
-					'id_petugas'		=> $petugas['id_petugas'],
+					'id_petugaskab'		=> $petugas['id_petugas'],
 				];
 
 				$menanggapi = $this->db->insert('tanggapan',$params);
