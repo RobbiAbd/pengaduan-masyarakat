@@ -1,3 +1,31 @@
+<?php
+
+function getCurrentDate()
+{
+  $month = date('Y-m-d');
+
+  $bulan = array(
+    1 =>   'Januari',
+    'Februari',
+    'Maret',
+    'April',
+    'Mei',
+    'Juni',
+    'Juli',
+    'Agustus',
+    'September',
+    'Oktober',
+    'November',
+    'Desember'
+  );
+
+  $result = explode('-', $month);
+
+  return $bulan[(int)$result[1]] . ' ' . $result[0];
+}
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -19,105 +47,117 @@
   <!-- Custom styles for this template-->
   <link href="<?= base_url() ?>assets/backend/css/sb-admin-2.min.css" rel="stylesheet">
 
+  <style>
+    .ml-auto {
+      margin-left: auto;
+    }
+  </style>
+
 </head>
 
 <body id="page-top">
 
   <style>
-   body {
-    font-family: Montserrat;
-  }
-</style>
+    body {
+      font-family: Helvetica;
+      font-size: 12px;
+    }
+  </style>
 
-<!-- Page Wrapper -->
-<div id="wrapper">
+  <!-- Page Wrapper -->
+  <div id="wrapper">
 
-  <!-- End of Topbar -->
+    <!-- End of Topbar -->
 
-  <!-- Begin Page Content -->
-  <div class="container-fluid">
+    <!-- Begin Page Content -->
+    <div class="">
 
-    <!-- Page Heading -->
-    <h1 class="h4 text-dark">Laporan Pengaduan Masyarakat</h1>
+      <!-- Page Heading -->
+      <div class="text-center text-dark">
+        <h4 style="font-size: 16px;">Laporan Pengaduan Kekerasan Dinas Pemberdayaan<br>
+        Perempuan Perlindungan Anak, Administrasi<br>
+        Kependudukan Pencatatan Sipil dan Pengendalian<br>
+        Penduduk Keluarga Berencana Provinsi Kepulauan<br>
+        Bangka Belitung</h4>
+        <h4 style="font-size: 15px;"><?= getCurrentDate(); ?></h4>
+      </div>
 
-    <table class="table">
-      <thead class="thead-dark">
-        <tr>
-          <th scope="col">No</th>
-          <th scope="col">Nama</th>
-          <th scope="col">Nik</th>
-          <th scope="col">Laporan</th>
-          <th scope="col">Tgl P</th>
-          <th scope="col">Status</th>
-          <th scope="col">Tanggapan</th>
-          <th scope="col">Tgl T</th>
-        </tr>
-      </thead>
-      <tbody>
-        <?php $no = 1; ?>
-        <?php foreach($laporan as $l) : ?>
-          <tr>
-            <th scope="row"><?= $no++; ?></th>
-            <td><?= $l['nama'] ?></td>
-            <td><?= $l['nik'] ?></td>
-            <td><?= $l['isi_laporan'] ?></td>
-            <td><?= $l['tgl_pengaduan'] ?></td>
-            <td>
-              <?
-              if ($l['status'] == '0') :
-                echo '<span class="badge badge-secondary">Sedang di verifikasi</span>';
-              elseif ($l['status'] == 'proses') :
-                echo '<span class="badge badge-primary">Sedang di proses</span>';
-              elseif ($l['status'] == 'selesai') :
-                echo '<span class="badge badge-success">Selesai di kerjakan</span>';
-              elseif ($l['status'] == 'tolak') :
-                echo '<span class="badge badge-danger">Pengaduan di tolak</span>';
-              else :
-                echo '-';
-              endif;
-              ?>
-            </td>
-            <td><?= $l['tanggapan'] == null ? '-' : $l['tanggapan']; ?></td>
-            <td><?= $l['tgl_tanggapan'] == null ? '-' : $l['tgl_tanggapan']; ?></td>
+      <table class="table mt-5">
+        <thead class="thead-dark text-center justify-items-center">
+          <tr class="">
+            <th scope="col">No</th>
+            <th scope="col">Nama Korban</th>
+            <th scope="col">Tgl Pengaduan</th>
+            <th scope="col">Jenis Pengaduan</th>
+            <th scope="col">Lokasi Kejadian</th>
+            <th scope="col">Kabupaten</th>
+            <th scope="col">Isi Laporan</th>
+            <th scope="col">Status</th>
+            <th scope="col">Tanggapan</th>
           </tr>
-        <?php endforeach; ?>
-      </tbody>
-    </table>
+        </thead>
+        <tbody>
+          <?php $no = 1; ?>
+          <?php foreach ($laporan as $l) : ?>
+            <tr>
+              <th scope="row"><?= $no++; ?></th>
+              <td><?= $l['nama_korban'] ?></td>
+              <td><?= $l['tgl_pengaduan'] ?></td>
+              <td><?= $l['jenis_laporan'] ?></td>
+              <td><?= $l['lokasi_kejadian'] ?></td>
+              <td><?= $l['nama_kabupaten'] ?></td>
+              <td><?= $l['isi_laporan'] ?></td>
+              <td><span class="badge badge-primary"><?= $l['status'] ?></span></td>
+              <td><?= $l['tanggapan'] == null ? '-' : $l['tanggapan']; ?></td>
+            </tr>
+          <?php endforeach; ?>
+        </tbody>
+      </table>
+
+      <div class="d-flex flex-row bg-primary">
+        <div class="ml-auto text-center">
+          <span>Kepala Dinas</span>
+          <br>
+          <br>
+          <br>
+          <span>Dr. Asyraf Suryadin, M.Pd <br>NIP: 19660504 199512 1 002</span>
+        </div>
+      </div>
+
+    </div>
+    <!-- /.container-fluid -->
+
 
   </div>
-  <!-- /.container-fluid -->
+  <!-- End of Main Content -->
 
-</div>
-<!-- End of Main Content -->
-
-<!-- Footer -->
-<!-- <footer class="sticky-footer bg-white">
+  <!-- Footer -->
+  <!-- <footer class="sticky-footer bg-white">
   <div class="container my-auto">
     <div class="copyright text-center my-auto">
       <span>Copyright &copy; Your Website 2019</span>
     </div>
   </div>
 </footer> -->
-<!-- End of Footer -->
+  <!-- End of Footer -->
 
-</div>
-<!-- End of Content Wrapper -->
+  </div>
+  <!-- End of Content Wrapper -->
 
-</div>
-<!-- End of Page Wrapper -->
+  </div>
+  <!-- End of Page Wrapper -->
 
 
-<script src="<?= base_url() ?>assets/backend/vendor/jquery/jquery.min.js"></script>
-<script src="<?= base_url() ?>assets/backend/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+  <script src="<?= base_url() ?>assets/backend/vendor/jquery/jquery.min.js"></script>
+  <script src="<?= base_url() ?>assets/backend/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
 
-<!-- Core plugin JavaScript-->
-<script src="<?= base_url() ?>assets/backend/vendor/jquery-easing/jquery.easing.min.js"></script>
+  <!-- Core plugin JavaScript-->
+  <script src="<?= base_url() ?>assets/backend/vendor/jquery-easing/jquery.easing.min.js"></script>
 
-<!-- Custom scripts for all pages-->
-<script src="<?= base_url() ?>assets/backend/js/sb-admin-2.min.js"></script>
+  <!-- Custom scripts for all pages-->
+  <script src="<?= base_url() ?>assets/backend/js/sb-admin-2.min.js"></script>
 
 
 </body>
 
 </html>
-

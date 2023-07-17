@@ -13,7 +13,23 @@
     <div class="col-lg-6">
       <?= form_open_multipart('Masyarakat/PengaduanController/edit/'.$pengaduan['id_pengaduan']); ?>
       <div class="form-group">
-        <label for="isi_laporan">Isi Laporan</label>
+        <label for="nama_korban">Nama Korban</label>
+        <input name="nama_korban" id="nama_korban" class="form-control" value="<?= $pengaduan['nama_korban'] ?>"></input>
+      </div>
+      <div class="form-group">
+        <label for="hubungan">Hubungan dengan korban</label>
+        <input name="hubungan" id="hubungan" class="form-control" value="<?= $pengaduan['hubungan'] ?>"></input>
+      </div>
+      <div class="form-group">
+        <label for="lokasi_kejadian">Lokasi Kejadian</label>
+        <input name="lokasi_kejadian" id="lokasi_kejadian" class="form-control" value="<?= $pengaduan['lokasi_kejadian'] ?>"></input>
+      </div>
+      <div class="form-group">
+        <label for="nama_pelaku">Nama Pelaku</label>
+        <input name="nama_pelaku" id="nama_pelaku" class="form-control" value="<?= $pengaduan['nama_pelaku'] ?>"></input>
+      </div>
+      <div class="form-group">
+        <label for="isi_laporan">Kronologi Kejadian</label>
         <input type="text" class="form-control" name="isi_laporan" id="isi_laporan" value="<?= $pengaduan['isi_laporan'] ?>">
       </div>
 

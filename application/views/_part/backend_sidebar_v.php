@@ -5,11 +5,13 @@
   <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
 
     <!-- Sidebar - Brand -->
-    <a class="sidebar-brand d-flex align-items-center justify-content-center" href="index.html">
+    <a class="sidebar-brand d-flex align-items-center justify-content-center" style="height:10rem;" href="#">
       <div class="sidebar-brand-icon rotate-n-15">
         <!-- <i class="fas fa-laugh-wink"></i> -->
       </div>
-      <div class="sidebar-brand-text mx-3">Pengaduan Masyarakat <sup>+62</sup></div>
+      <div class="sidebar-brand-text mx-3">
+        <img src="<?= base_url() ?>assets/backend/img/bangka_belitung.png" alt="logo provinsi bangka belitung" height="125">
+      </div>
     </a>
     
     <?php if ($this->session->userdata('level') == 'admin' OR $this->session->userdata('level') == 'petugas') : ?>
@@ -95,6 +97,7 @@
           <?php if ($this->session->userdata('level') == 'admin') : ?>
             <h6 class="collapse-header">Registrasi:</h6>
             <a class="collapse-item" href="<?= base_url('Admin/PetugasController'); ?>">Tambah Petugas</a>
+            <a class="collapse-item" href="<?= base_url('Admin/MasyarakatController'); ?>"> Konfirmasi Akun</a>
           <?php endif; ?>
           <?php // end tambah petugas admin akses ?>
 
@@ -105,16 +108,16 @@
   <?php // end dropdown admin hanya oleh akun admin dan petugas ?>
   
 
-  <?php // generate laporan akses admin ?>
-  <?php if ($this->session->userdata('level') == 'admin') : ?>
-  <!-- Nav Item - Generate Laporan -->
+  <?php // Cetak Laporan akses admin ?>
+  <?php if ($this->session->userdata('level') == 'admin' || $this->session->userdata('level') == 'petugas') : ?>
+  <!-- Nav Item - Cetak Laporan -->
   <li class="nav-item">
     <a class="nav-link" href="<?= base_url('Admin/LaporanController'); ?>">
       <i class="fas fa-file-pdf"></i>
-      <span>Generate Laporan</span></a>
+      <span>Cetak Laporan</span></a>
     </li>
   <?php endif; ?>
-  <?php // end generate laporan akses admin ?>
+  <?php // end Cetak Laporan akses admin ?>
 
     <!-- Nav Item - Logout -->
     <li class="nav-item">

@@ -37,6 +37,17 @@
       </div>
     </div>
 
+    <div class="form-group">
+        <label for="kabupaten"> Kabupaten </label>
+        <select name="kabupaten" id="kabupaten" class="form-control"> 
+          <option value=""> -- Pilih Kabupaten -- </option>
+          <?php foreach( $data_kabupaten as $kabupaten ) : ?>
+            <option value="<?= $kabupaten["id_kabupaten"] ?>"> <?= $kabupaten["nama_kabupaten"] ?></option>
+          <?php endforeach; ?>
+        </select>
+        <small class="text-muted"> untuk level admin tidak perlu menginputkan kabupaten </small>
+    </div>
+
     <button type="submit" class="btn btn-primary">Submit</button>
     <?= form_close(); ?>
   </div>

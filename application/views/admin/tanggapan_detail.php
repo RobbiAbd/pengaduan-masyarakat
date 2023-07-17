@@ -23,7 +23,7 @@
       <div class="col-md-6">
         <div class="card-body">
           <h5 class="card-title">Tgl Pengaduan : <?= $data_pengaduan['tgl_pengaduan']; ?></h5>
-          <p class="card-text">Status : <?= $data_pengaduan['status'] == 0 ? 'Belum di verifikasi' : ''; ?></p>
+          <p class="card-text">Status : <?= $data_pengaduan['status'] == 'Diajukan' ? 'Belum di verifikasi' : ''; ?></p>
           <p class="card-text"><small class="text-muted">Laporan : <?= $data_pengaduan['isi_laporan'] ?></small></p>
         </div>
       </div>
@@ -43,12 +43,12 @@
      <label for="">Status Tanggapan</label>
      <div class="form-group">
       <div class="form-check form-check-inline">
-        <input class="form-check-input" type="radio" name="status" id="status-setuju" value="proses" checked="">
-        <label class="form-check-label" for="status-setuju">Setuju</label>
+        <input class="form-check-input" type="radio" name="status" id="status-setuju" value="Diproses" checked="">
+        <label class="form-check-label" for="status-setuju">Diproses</label>
       </div>
       <div class="form-check form-check-inline">
-        <input class="form-check-input" type="radio" name="status" id="status-tolak" value="tolak">
-        <label class="form-check-label" for="status-tolak">Tolak</label>
+        <input class="form-check-input" type="radio" name="status" id="status-tolak" value="Ditolak">
+        <label class="form-check-label" for="status-tolak">Ditolak</label>
       </div>
     </div>
 
