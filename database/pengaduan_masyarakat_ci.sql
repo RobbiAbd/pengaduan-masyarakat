@@ -142,6 +142,7 @@ CREATE TABLE `pengaduan` (
   `nama_korban` varchar(35) NOT NULL,
   `jenis_laporan` varchar(35) NOT NULL,
   `isi_laporan` text NOT NULL,
+  `foto` varchar(255) NOT NULL,
   `status` enum('Diajukan','Diproses','Selesai','Ditolak') NOT NULL,
   `id_kabupaten` int(11) NOT NULL,
   PRIMARY KEY (`id_pengaduan`),
@@ -154,17 +155,17 @@ CREATE TABLE `pengaduan` (
 
 LOCK TABLES `pengaduan` WRITE;
 INSERT INTO `pengaduan` VALUES 
-(12,'2023-01-26',1212345678912354,'Sodara','Amir','Palembang','Riri','Pelecehan Seksual','Pelaku memukul korban menggunakan tauge','Selesai',7),
-(15,'2023-01-26',1212345678912354,'kawan','Tedjo','bekasi','suasana','Kekerasan Dalam Rumah Tangga','lupa makan','Diproses',6),
-(16,'2023-02-14',1212345678912354,'Teman','Budi','Pantai','Raya','Kekerasan Dalam Rumah Tangga','Tidak memberikan izin tinggal','Diproses',5),
-(18,'2023-06-17',12345678918,'Tetangga','Susanto','Jalan Pramuka','Agus','Kekerasan Dalam Rumah Tangga','pencemaran nama baik','Diajukan',7),
-(21,'2023-06-19',1212345678912354,'teman','Budi Sentosa','Pantai Kuta','Charel','Kekerasan Dalam Rumah Tangga','Pemukulan sepihak','Diajukan',7),
-(22,'2023-06-19',1212345678912354,'teman','Budi Sentosa','Jl. Assalam','Charel','Kekerasan Dalam Rumah Tangga','asdf','Selesai',7),
-(23,'2023-06-19',1212345678912354,'teman','Budi Sentosa','Jl. Assalam','Saleh','Kekerasan Dalam Rumah Tangga','asdf','Ditolak',7),
-(24,'2023-06-19',331301117223,'teman','Budi Sentosa Wijaya','Jl. Assalam','Charel Adi','Kekerasan Dalam Rumah Tangga','pelaku memukul korban dengan tongkat baseball','Diajukan',4),
-(25,'2023-06-19',331301117223,'teman','Budi Sentosa Wijaya','Jl. Assalam','Charel Adi','Kekerasan Dalam Rumah Tangga','Pemukulan sepulang sekolah','Diajukan',2),
-(26,'2023-06-19',331301117223,'teman','Dimas','klaten','Kates','Hak Asuh Anak','Kates dipukul oleh dimas','Diajukan',2),
-(27,'2023-06-19',1212345678912354,'teman','Budi Sentosa','Jl. Assalam','Charel Adi','Kekerasan Dalam Rumah Tangga','Charel dipukul ditempat','Ditolak',1);
+(12,'2023-01-26',1212345678912354,'Sodara','Amir','Palembang','Riri','Pelecehan Seksual','Pelaku memukul korban menggunakan tauge','f158381b96b131e019fd1d6f3d9da57e.jpg','Selesai',7),
+(15,'2023-01-26',1212345678912354,'kawan','Tedjo','bekasi','suasana','Kekerasan Dalam Rumah Tangga','lupa makan','c84e4069757743fa8f35c29a74c0d2b2.jpg','Diproses',6),
+(16,'2023-02-14',1212345678912354,'Teman','Budi','Pantai','Raya','Kekerasan Dalam Rumah Tangga','Tidak memberikan izin tinggal','d8695e60c4c69842e4209cbde61a4ced.jpg','Diproses',5),
+(18,'2023-06-17',12345678918,'Tetangga','Susanto','Jalan Pramuka','Agus','Kekerasan Dalam Rumah Tangga','pencemaran nama baik','8fd647be4d1b8554e1a5f5ecf4c75fb3.jpg','Diajukan',7),
+(21,'2023-06-19',1212345678912354,'teman','Budi Sentosa','Pantai Kuta','Charel','Kekerasan Dalam Rumah Tangga','Pemukulan sepihak','17c62806afa37b485290f469eab569a8.jpg','Diajukan',7),
+(22,'2023-06-19',1212345678912354,'teman','Budi Sentosa','Jl. Assalam','Charel','Kekerasan Dalam Rumah Tangga','asdf','17c62806afa37b485290f469eab569a8.jpg','Selesai',7),
+(23,'2023-06-19',1212345678912354,'teman','Budi Sentosa','Jl. Assalam','Saleh','Kekerasan Dalam Rumah Tangga','asdf','98372ccd6427d0e116b83e1d1d24199a.jpg','Ditolak',7),
+(24,'2023-06-19',331301117223,'teman','Budi Sentosa Wijaya','Jl. Assalam','Charel Adi','Kekerasan Dalam Rumah Tangga','pelaku memukul korban dengan tongkat baseball','1269cf087e0fef797d2e23a3862e9feb.jpg','Diajukan',4),
+(25,'2023-06-19',331301117223,'teman','Budi Sentosa Wijaya','Jl. Assalam','Charel Adi','Kekerasan Dalam Rumah Tangga','Pemukulan sepulang sekolah','bc1098fa77aa1625e0ec7a4f10fc6f6f.jpg','Diajukan',2),
+(26,'2023-06-19',331301117223,'teman','Dimas','klaten','Kates','Hak Asuh Anak','Kates dipukul oleh dimas','c9b3b8793f5615b8b5db8272946ad06c.jpg','Diajukan',2),
+(27,'2023-06-19',1212345678912354,'teman','Budi Sentosa','Jl. Assalam','Charel Adi','Kekerasan Dalam Rumah Tangga','Charel dipukul ditempat','40a5d8915866e663f2294ba74f3e1231.jpg','Ditolak',1);
 /*!40000 ALTER TABLE `pengaduan` ENABLE KEYS */;
 UNLOCK TABLES;
 
