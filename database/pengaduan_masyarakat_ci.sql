@@ -51,10 +51,10 @@ UNLOCK TABLES;
 
 DROP TABLE IF EXISTS `kabupaten`;
 CREATE TABLE `kabupaten` (
-  `id` int(11) NOT NULL,
-  `nama` varchar(255) NOT NULL,
+  `id_kabupaten` int(11) NOT NULL,
+  `nama_kabupaten` varchar(255) NOT NULL,
   `ibukota` varchar(255) NOT NULL,
-  PRIMARY KEY (`id`)
+  PRIMARY KEY (`id_kabupaten`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
@@ -62,7 +62,7 @@ CREATE TABLE `kabupaten` (
 --
 
 LOCK TABLES `kabupaten` WRITE;
-INSERT INTO `kabupaten` (`id`, `nama`, `ibukota`) VALUES
+INSERT INTO `kabupaten` (`id_kabupaten`, `nama_kabupaten`, `ibukota`) VALUES
 (1, 'Bangka', 'Sungai Liat'),
 (2, 'Bangka Barat', 'Muntok'),
 (3, 'Bangka Selatan', 'Toboali'),

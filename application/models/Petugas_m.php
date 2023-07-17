@@ -24,10 +24,10 @@ class Petugas_m extends CI_Model {
 
 	public function get_all_petugas()
 	{
-		$this->db->select("petugas.*, kabupaten.nama as kabupaten");
+		$this->db->select("petugas.*, kabupaten.nama_kabupaten as kabupaten");
 		$this->db->from($this->table);
 		$this->db->join("petugas_kabupaten", "petugas_kabupaten.petugas_id = petugas.id_petugas", "left");
-		$this->db->join("kabupaten", "kabupaten.id = petugas_kabupaten.kabupaten_id", "left");
+		$this->db->join("kabupaten", "kabupaten.id_kabupaten = petugas_kabupaten.kabupaten_id", "left");
 		
 		return $this->db->get();
 	}
