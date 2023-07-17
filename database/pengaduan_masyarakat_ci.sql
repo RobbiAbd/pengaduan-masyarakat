@@ -208,12 +208,8 @@ CREATE TABLE `tanggapan` (
 
 LOCK TABLES `tanggapan` WRITE;
 INSERT INTO `tanggapan` (`id_tanggapan`, `id_pengaduan`, `tgl_tanggapan`, `tanggapan`, `id_petugaskab`) VALUES
-(19,10,'2023-01-11','oke konfirm',6),
 (20,15,'2023-02-14','sedang didalami',6),
 (21,12,'2023-02-14','Sedang dalam proses',6),
-(22,22,'2023-06-19','Baik akan kami proses',6),
-(23,23,'2023-06-19','Deskripsi kurang jelas.',6),
-(24,16,'2023-06-19','Diterima, pengaduan akan diproses',2),
 (25,27,'2023-06-19','Deskripsi kurang lengkap',2);
 UNLOCK TABLES;
 
