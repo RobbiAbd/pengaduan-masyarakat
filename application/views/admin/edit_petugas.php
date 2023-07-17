@@ -42,7 +42,7 @@
         <select name="kabupaten" id="kabupaten" class="form-control"> 
           <option value=""> -- Pilih Kabupaten -- </option>
           <?php foreach( $data_kabupaten as $kabupaten ) : ?>
-            <option value="<?= $kabupaten["id"] ?>"> <?= $kabupaten["nama"] ?></option>
+            <option value="<?= $kabupaten["id_kabupaten"] ?>"> <?= $kabupaten["nama_kabupaten"] ?></option>
           <?php endforeach; ?>
         </select>
         <small class="text-muted"> untuk level admin tidak perlu menginputkan kabupaten </small>
