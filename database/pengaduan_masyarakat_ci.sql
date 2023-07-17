@@ -192,20 +192,12 @@ CREATE TABLE `petugas` (
 -- Dumping data for table `petugas`
 --
 
-<<<<<<< HEAD
-INSERT INTO `petugas` (`id_petugas`, `nama`, `nik`, `username`, `password`, `telp`, `alamat`, `level`, `foto_profile`) VALUES
-(2, 'putri', 3212345678912354, 'admin', '$2y$10$YlpZmz2Uq.RxG5bHvMjYjej5y2AYkEzr9JbDKGHe3sWbpFkVhkury', '08111111111', 'belitong', 'admin', 'user.png'),
-(6, 'amini', 3212345678912352, 'petugas', '$2y$10$SIUNsTMGwDOoXJ62kgoMueorXuuDenxdG0ZKRU1NUigM2Xby0bAmC', '081222222222', 'mentok', 'petugas', 'user.png');
-
--- --------------------------------------------------------
-=======
 LOCK TABLES `petugas` WRITE;
 INSERT INTO `petugas` (`id_petugas`, `nama_petugas`, `nik_petugas`, `username_petugas`, `password_petugas`, `telp`, `alamat`, `level`, `foto_profile`) VALUES
 (2, 'putri', 3212345678912354, 'admin', '$2y$10$YlpZmz2Uq.RxG5bHvMjYjej5y2AYkEzr9JbDKGHe3sWbpFkVhkury', '08111111111', 'belitong', 'admin', 'user.png'),
 (6, 'amini', 3212345678912352, 'petugas', '$2y$10$SIUNsTMGwDOoXJ62kgoMueorXuuDenxdG0ZKRU1NUigM2Xby0bAmC', '081222222222', 'mentok', 'petugas', 'user.png'),
 (7,'Darsono',0,'darson112','$2y$10$wIHKdPENug2c/.d0yIzYyO3SdsHv0gfBsfV2zQF0eatE1UbVYY49G','082138702811','','petugas','user.png');
 UNLOCK TABLES;
->>>>>>> 3e78536cc87c90468d2862ff0e07d3c7fad2aa2c
 
 --
 -- Table structure for table `petugas_kabupaten`
