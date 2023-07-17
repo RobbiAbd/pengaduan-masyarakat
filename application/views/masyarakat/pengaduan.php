@@ -98,7 +98,7 @@
       <?php foreach ($data_pengaduan as $dp) : ?>
         <tr>
           <th scope="row"><?= $no++; ?></th>
-          <td><?= $dp['nama']; ?></td>
+          <td><?= $dp['nama_masyarakat']; ?></td>
           <td><?= $dp['nama_korban']; ?></td>
           <td><?= $dp['hubungan']; ?></td>
           <td><?= $dp['jenis_laporan']; ?></td>

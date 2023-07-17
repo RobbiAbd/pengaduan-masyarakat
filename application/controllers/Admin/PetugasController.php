@@ -42,9 +42,9 @@ class PetugasController extends CI_Controller {
 			$this->load->view('_part/backend_foot');
 		else :
 			$params = [
-				'nama'					=> htmlspecialchars($this->input->post('nama',TRUE)),
-				'username'				=> htmlspecialchars($this->input->post('username',TRUE)),
-				'password'				=> password_hash(htmlspecialchars($this->input->post('password',TRUE)), PASSWORD_DEFAULT),
+				'nama_petugas'			=> htmlspecialchars($this->input->post('nama',TRUE)),
+				'username_petugas'		=> htmlspecialchars($this->input->post('username',TRUE)),
+				'password_petugas'		=> password_hash(htmlspecialchars($this->input->post('password',TRUE)), PASSWORD_DEFAULT),
 				'telp'					=> htmlspecialchars($this->input->post('telp',TRUE)),
 				'level'					=> htmlspecialchars($this->input->post('level',TRUE)),
 				'foto_profile'			=> 'user.png',
@@ -142,8 +142,8 @@ public function edit($id)
 
 			$params = [
 				'id'        => $id_petugas,
-				'nama'		=> htmlspecialchars($this->input->post('nama', TRUE)),
-				'telp'		=> htmlspecialchars($this->input->post('telp', TRUE)),
+				'nama'      => htmlspecialchars($this->input->post('nama', TRUE)),
+				'telp'      => htmlspecialchars($this->input->post('telp', TRUE)),
 				'level'		=> htmlspecialchars($this->input->post('level', TRUE)),
 				'kabupaten' => htmlspecialchars($this->input->post('kabupaten', TRUE)),       
 			];
@@ -179,7 +179,7 @@ public function edit($id)
 	{
 		if (!empty($str)) :
 			$masyarakat = $this->db->get_where('masyarakat',['username' => $str])->row_array();
-			$petugas 	= $this->db->get_where('petugas',['username' => $str])->row_array();
+			$petugas 	= $this->db->get_where('petugas',['username_petugas' => $str])->row_array();
 
 			if ($masyarakat == true || $petugas == true) :
 

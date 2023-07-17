@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Generation Time: Jul 17, 2023 at 12:00 PM
+-- Generation Time: Jul 17, 2023 at 12:24 PM
 -- Server version: 10.4.11-MariaDB
 -- PHP Version: 7.4.1
 
@@ -103,19 +103,19 @@ INSERT INTO `masyarakat` (`nik`, `username`, `password`, `is_verified`) VALUES
 --
 
 CREATE TABLE `masyarakat_detail` (
-  `id` int(11) NOT NULL,
-  `nama` varchar(35) NOT NULL,
+  `id_masyarakat` int(11) NOT NULL,
+  `nama_masyarakat` varchar(35) NOT NULL,
   `telp` varchar(13) NOT NULL,
   `alamat` varchar(35) NOT NULL,
   `foto_profile` varchar(225) NOT NULL,
-  `id_masyarakat` bigint(20) NOT NULL
+  `nik` bigint(20) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `masyarakat_detail`
 --
 
-INSERT INTO `masyarakat_detail` (`id`, `nama`, `telp`, `alamat`, `foto_profile`, `id_masyarakat`) VALUES
+INSERT INTO `masyarakat_detail` (`id_masyarakat`, `nama_masyarakat`, `telp`, `alamat`, `foto_profile`, `nik`) VALUES
 (1, 'aisyah', '08131111111', 'pangkal', 'user.png', 1212345678912354),
 (2, 'lulu', '08111111111', 'PKG', 'user.png', 12345678918);
 
@@ -250,8 +250,8 @@ ALTER TABLE `masyarakat`
 -- Indexes for table `masyarakat_detail`
 --
 ALTER TABLE `masyarakat_detail`
-  ADD PRIMARY KEY (`id`),
-  ADD KEY `id_masyarakat` (`id_masyarakat`);
+  ADD PRIMARY KEY (`id_masyarakat`),
+  ADD KEY `id_masyarakat` (`nik`);
 
 --
 -- Indexes for table `pengaduan`
@@ -290,7 +290,7 @@ ALTER TABLE `tanggapan`
 -- AUTO_INCREMENT for table `masyarakat_detail`
 --
 ALTER TABLE `masyarakat_detail`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id_masyarakat` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `pengaduan`

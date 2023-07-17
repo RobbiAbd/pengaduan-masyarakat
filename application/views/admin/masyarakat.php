@@ -22,7 +22,7 @@
       <tr>
         <th scope="row"><?= $no++; ?></th>
         <td><?= $dm['nik']; ?></td>
-        <td><?= $dm['nama']; ?></td>
+        <td><?= $dm['nama_masyarakat']; ?></td>
         <td><?= $dm['username']; ?></td>
         <td><?= $dm['telp']; ?></td>
         <td>

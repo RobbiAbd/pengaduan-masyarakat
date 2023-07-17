@@ -17,7 +17,7 @@
       </div>
       <div class="col-md-8">
         <div class="card-body">
-          <h5 class="card-title">Nama : <?= $this->session->userdata('level') == NULL ? $user['nama'] : $user['nama_petugas']; ?></h5>
+          <h5 class="card-title">Nama : <?= $this->session->userdata('level') == NULL ? $user['nama_masyarakat'] : $user['nama_petugas']; ?></h5>
           <p class="card-text">NIK    : <?= $this->session->userdata('level') == NULL ? $user['nik'] : $user['nik_petugas']; ?></p>
           <p class="card-text">Alamat : <?= $user['alamat'] ?></p>
           <p class="card-text">Telp   : <?= $user['telp'] ?></p>

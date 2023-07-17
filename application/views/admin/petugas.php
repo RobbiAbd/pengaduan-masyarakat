@@ -80,8 +80,8 @@
     <?php foreach ($data_petugas as $dp) : ?>
       <tr>
         <th scope="row"><?= $no++; ?></th>
-        <td><?= $dp['nama']; ?></td>
-        <td><?= $dp['username']; ?></td>
+        <td><?= $dp['nama_petugas']; ?></td>
+        <td><?= $dp['username_petugas']; ?></td>
         <td><?= $dp['telp']; ?></td>
         <td>
           <?php if ($dp['kabupaten'] == NULL) : ?>
@@ -92,7 +92,7 @@
         </td>
         <td><?= $dp['level']; ?></td>
         <td>
-        <?php if ($dp['username'] == $this->session->userdata('username')) : ?>
+        <?php if ($dp['username_petugas'] == $this->session->userdata('username')) : ?>
           <small>Tidak ada aksi</small>
         <?php else : ?>
           <a href="<?= base_url('Admin/PetugasController/edit/'.$dp['id_petugas']) ?>" class="btn btn-info">Edit</a>

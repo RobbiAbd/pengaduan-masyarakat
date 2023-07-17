@@ -15,7 +15,7 @@
 			<div class="col-md-4">
 				<div class="card shadow mb-4" style="width: 18rem;">
 					<div class="card-header py-3">
-						<h6 class="m-0 font-weight-bold text-primary"><?= $dp['nama'] ?></h6>
+						<h6 class="m-0 font-weight-bold text-primary"><?= $dp['nama_masyarakat'] ?></h6>
 					</div>
 					<img src="<?= base_url() ?>assets/uploads/<?= $dp['foto'] ?>" class="card-img-top" alt="Thumbnail Pengaduan">
 					<div class="card-body">

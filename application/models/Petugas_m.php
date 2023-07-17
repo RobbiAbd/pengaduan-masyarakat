@@ -36,9 +36,9 @@ class Petugas_m extends CI_Model {
 	{
 		$petugas_kabupaten = $this->db->get_where('petugas_kabupaten', ['petugas_id' => $params['id']])->row_array();
 		$petugas_params    = [
-			'nama'  => $params['nama'],
-			'telp'  => $params['telp'],
-			'level' => $params['level'],
+			'nama_petugas'  => $params['nama'],
+			'telp'          => $params['telp'],
+			'level'         => $params['level'],
 		];
 
 		if ($params['level'] == 'petugas') $this->update_petugas_kabupaten($params, $petugas_kabupaten);
