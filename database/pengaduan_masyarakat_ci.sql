@@ -205,7 +205,8 @@ UNLOCK TABLES;
 
 DROP TABLE IF EXISTS `petugas_kabupaten`;
 CREATE TABLE `petugas_kabupaten` (
-  `id` int(11) NOT NULL,
+  `id_petugaskab` int(11) NOT NULL,
+  `nama_petugaskab` varchar(255) NOT NULL,
   `petugas_id` int(11) NOT NULL,
   `kabupaten_id` int(11) NOT NULL,
   KEY `petugas_kabupaten_ibfk_1` (`petugas_id`),
@@ -217,9 +218,9 @@ CREATE TABLE `petugas_kabupaten` (
 --
 
 LOCK TABLES `petugas_kabupaten` WRITE;
-INSERT INTO `petugas_kabupaten` (`id`, `petugas_id`, `kabupaten_id`) VALUES
-(2, 6, 7),
-(3, 7, 1);
+INSERT INTO `petugas_kabupaten` (`id_petugaskab`, `nama_petugaskab`, `petugas_id`, `kabupaten_id`) VALUES
+(2, 'amini', 6, 7),
+(3, 'darsono', 7, 1);
 UNLOCK TABLES;
 
 --
