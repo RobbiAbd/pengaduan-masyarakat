@@ -27,10 +27,10 @@ class MasyarakatController extends CI_Controller {
     }
 
     public function status($nik) {
-        $masyarakat = $this->db->get_where('masyarakat', ['nik' => $nik])->row_array();
+        $masyarakat = $this->db->get_where('masyarakat', ['nik_masyarakat' => $nik])->row_array();
         $status = $masyarakat['is_verified'] ? 0 : 1;
 
-        $response = $this->db->update('masyarakat', [is_verified => $status ], ['nik' => $nik]);
+        $response = $this->db->update('masyarakat', [is_verified => $status ], ['nik_masyarakat' => $nik]);
 
         if ($response) :
             $this->session->set_flashdata('msg', '<div class="alert alert-primary" role="alert"> Berhasil Update Status Akun </div>');
