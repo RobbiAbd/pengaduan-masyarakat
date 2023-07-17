@@ -24,6 +24,15 @@
         <input name="lokasi_kejadian" id="lokasi_kejadian" class="form-control"></input>
       </div>
       <div class="form-group">
+        <label for="kabupaten"> Kabupaten </label>
+        <select name="kabupaten" id="kabupaten" class="form-control"> 
+          <option value=""> -- Pilih Kabupaten -- </option>
+          <?php foreach( $data_kabupaten as $kabupaten ) : ?>
+            <option value="<?= $kabupaten["id_kabupaten"] ?>"> <?= $kabupaten["nama_kabupaten"] ?></option>
+          <?php endforeach; ?>
+        </select>
+      </div>
+      <div class="form-group">
         <label for="jenis_laporan">Jenis Laporan</label></br>
         <input type="radio" id="jenis_laporan" name="jenis_laporan" value="Kekerasan Dalam Rumah Tangga">
         <label for="html">Kekerasan Dalam Rumah Tangga</label><br>
@@ -89,7 +98,7 @@
       <?php foreach ($data_pengaduan as $dp) : ?>
         <tr>
           <th scope="row"><?= $no++; ?></th>
-          <td><?= $dp['nama']; ?></td>
+          <td><?= $dp['nama_masyarakat']; ?></td>
           <td><?= $dp['nama_korban']; ?></td>
           <td><?= $dp['hubungan']; ?></td>
           <td><?= $dp['jenis_laporan']; ?></td>

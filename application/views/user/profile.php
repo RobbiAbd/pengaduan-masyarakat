@@ -17,10 +17,10 @@
       </div>
       <div class="col-md-8">
         <div class="card-body">
-          <h5 class="card-title">Nama : <?= $user['nama']; ?></h5>
-          <p class="card-text">NIK: <?= $user['nik'] ?></p>
+          <h5 class="card-title">Nama : <?= $this->session->userdata('level') == NULL ? $user['nama_masyarakat'] : $user['nama_petugas']; ?></h5>
+          <p class="card-text">NIK    : <?= $this->session->userdata('level') == NULL ? $user['nik_masyarakat'] : $user['nik_petugas']; ?></p>
           <p class="card-text">Alamat : <?= $user['alamat'] ?></p>
-          <p class="card-text">Telp : <?= $user['telp'] ?></p>
+          <p class="card-text">Telp   : <?= $user['telp'] ?></p>
           <!-- <p class="card-text"><small class="text-muted">Member since </small></p> -->
           <!-- <p><button class="btn btn-success" onclick="alert('halaman belum dibuat')">Ganti Foto</button></p> -->
         </div>

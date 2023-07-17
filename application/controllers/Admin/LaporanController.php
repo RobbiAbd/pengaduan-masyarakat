@@ -8,17 +8,20 @@ class LaporanController extends CI_Controller {
 		parent::__construct();
 		//Load Dependencies
 		is_logged_in();
-		if ($this->session->userdata('level') != 'admin') :
+		if ($this->session->userdata('level') == NULL) :
 			redirect('Auth/BlockedController');
 		endif;
+
+		$this->load->model('Petugas_m');
 		$this->load->model('Pengaduan_m');
 	}
 
 	// List all your items
 	public function index()
 	{
-		$data['title'] = 'Generate Laporan';
-		$data['laporan'] = $this->Pengaduan_m->laporan_pengaduan()->result_array();
+		$id_kabupaten    = $this->get_kabupaten_id();
+		$data['title']   = 'Cetak Laporan';
+		$data['laporan'] = $this->Pengaduan_m->laporan_pengaduan($id_kabupaten)->result_array();
 
 		$this->load->view('_part/backend_head', $data);
 		$this->load->view('_part/backend_sidebar_v');
@@ -31,13 +34,27 @@ class LaporanController extends CI_Controller {
 	public function generate_laporan()
 	{
 	
-	$data['laporan'] = $this->Pengaduan_m->laporan_pengaduan()->result_array();
+	$id_kabupaten    = $this->get_kabupaten_id();
+	$data['laporan'] = $this->Pengaduan_m->laporan_pengaduan($id_kabupaten)->result_array();
 
     $this->load->library('pdf');
 
     $this->pdf->setPaper('A4', 'landscape'); // opsional | default A4
     $this->pdf->filename = "laporan-pengaduan.pdf"; // opsional | default is laporan.pdf
     $this->pdf->load_view('laporan_pdf', $data);
+	}
+
+	public function get_kabupaten_id() 
+	{
+		$id_kabupaten  = NULL;
+		$petugas       = $this->Petugas_m->get_petugas_by_username($this->session->userdata('username'))->row_array();
+		$level_petugas = $this->session->userdata('level');
+
+		if ($level_petugas == 'petugas') {
+			$id_kabupaten = $this->Petugas_m->get_petugas_kabupaten($petugas['id_petugas'])->row()->kabupaten_id;
+		}
+
+		return $id_kabupaten;
 	}
 }
 

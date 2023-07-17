@@ -43,6 +43,16 @@
         <label class="form-check-label" for="petugas">Petugas</label>
       </div>
     </div>
+    <div class="form-group">
+        <label for="kabupaten"> Kabupaten </label>
+        <select name="kabupaten" id="kabupaten" class="form-control"> 
+          <option value=""> -- Pilih Kabupaten -- </option>
+          <?php foreach( $data_kabupaten as $kabupaten ) : ?>
+            <option value="<?= $kabupaten["id_kabupaten"] ?>"> <?= $kabupaten["nama_kabupaten"] ?></option>
+          <?php endforeach; ?>
+        </select>
+        <small class="text-muted"> untuk level admin tidak perlu menginputkan kabupaten </small>
+    </div>
 
     <button type="submit" class="btn btn-primary">Submit</button>
     <?= form_close(); ?>
@@ -58,7 +68,9 @@
     <tr>
       <th scope="col">#</th>
       <th scope="col">Nama</th>
+      <th scope="col">Username</th>
       <th scope="col">Telp</th>
+      <th scope="col">Kabupaten</th>
       <th scope="col">Level</th>
       <th scope="col">Aksi</th>
     </tr>
@@ -68,11 +80,19 @@
     <?php foreach ($data_petugas as $dp) : ?>
       <tr>
         <th scope="row"><?= $no++; ?></th>
-        <td><?= $dp['nama']; ?></td>
+        <td><?= $dp['nama_petugas']; ?></td>
+        <td><?= $dp['username_petugas']; ?></td>
         <td><?= $dp['telp']; ?></td>
+        <td>
+          <?php if ($dp['kabupaten'] == NULL) : ?>
+            Tidak Ada
+          <?php else: ?>
+            <?= $dp['kabupaten'] ?>
+          <?php endif; ?>
+        </td>
         <td><?= $dp['level']; ?></td>
         <td>
-        <?php if ($dp['username'] == $this->session->userdata('username')) : ?>
+        <?php if ($dp['username_petugas'] == $this->session->userdata('username')) : ?>
           <small>Tidak ada aksi</small>
         <?php else : ?>
           <a href="<?= base_url('Admin/PetugasController/edit/'.$dp['id_petugas']) ?>" class="btn btn-info">Edit</a>
