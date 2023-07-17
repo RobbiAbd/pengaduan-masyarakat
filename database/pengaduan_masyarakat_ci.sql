@@ -78,7 +78,7 @@ UNLOCK TABLES;
 
 DROP TABLE IF EXISTS `masyarakat`;
 CREATE TABLE `masyarakat` (
-  `nik` bigint(16) NOT NULL,
+  `nik_masyarakat` bigint(16) NOT NULL,
   `username` varchar(25) NOT NULL,
   `password` varchar(225) NOT NULL,
   `is_verified` tinyint(1) NOT NULL DEFAULT 0,
