@@ -198,7 +198,7 @@ class TanggapanController extends CI_Controller {
 
 			else :
 
-				$petugas = $this->db->get_where('petugas',['username' => $this->session->userdata('username')])->row_array();
+				$petugas = $this->db->get_where('petugas',['username_petugas' => $this->session->userdata('username')])->row_array();
 
 				$params = [
 					'id_pengaduan'		=> $id_pengaduan,

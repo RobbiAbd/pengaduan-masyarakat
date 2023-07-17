@@ -21,15 +21,15 @@
     <?php foreach ($data_masyarakat as $dm) : ?>
       <tr>
         <th scope="row"><?= $no++; ?></th>
-        <td><?= $dm['nik']; ?></td>
+        <td><?= $dm['nik_masyarakat']; ?></td>
         <td><?= $dm['nama_masyarakat']; ?></td>
         <td><?= $dm['username']; ?></td>
         <td><?= $dm['telp']; ?></td>
         <td>
         <?php if ($dm['is_verified']) : ?>
-          <a href="<?= base_url('Admin/MasyarakatController/status/'. $dm['nik'] ) ?>" class="btn btn-info"> Aktif </a>
+          <a href="<?= base_url('Admin/MasyarakatController/status/'. $dm['nik_masyarakat'] ) ?>" class="btn btn-info"> Aktif </a>
         <?php else : ?>
-          <a href="<?= base_url('Admin/MasyarakatController/status/'. $dm['nik'] ) ?>" class="btn btn-danger"> Nonaktif </a>
+          <a href="<?= base_url('Admin/MasyarakatController/status/'. $dm['nik_masyarakat'] ) ?>" class="btn btn-danger"> Nonaktif </a>
         <?php endif; ?>
         </td>
       </tr>
