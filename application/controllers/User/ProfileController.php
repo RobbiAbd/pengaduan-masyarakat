@@ -13,9 +13,9 @@ class ProfileController extends CI_Controller {
 	// List all your items
 	public function index()
 	{
-        $data['title'] = 'Profile';
+    $data['title'] = 'Profile';
 
-        $masyarakat = $this->db->get_where('masyarakat',['username' => $this->session->userdata('username')])->row_array();
+    $masyarakat = $this->db->get_where('masyarakat',['username' => $this->session->userdata('username')])->row_array();
 		$detail_masyarakat = [];
 		if($masyarakat) {
 			$detail_masyarakat = $this->db->get_where('masyarakat_detail', ['nik' => $masyarakat['nik']])->row_array();
