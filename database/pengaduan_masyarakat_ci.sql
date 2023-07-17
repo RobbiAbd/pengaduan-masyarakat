@@ -82,7 +82,7 @@ CREATE TABLE `masyarakat` (
   `username` varchar(25) NOT NULL,
   `password` varchar(225) NOT NULL,
   `is_verified` tinyint(1) NOT NULL DEFAULT 0,
-  PRIMARY KEY (`nik`)
+  PRIMARY KEY (`nik_masyarakat`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
@@ -90,7 +90,7 @@ CREATE TABLE `masyarakat` (
 --
 
 LOCK TABLES `masyarakat` WRITE;
-INSERT INTO `masyarakat` (`nik`, `username`, `password`, `is_verified`) VALUES
+INSERT INTO `masyarakat` (`nik_masyarakat`, `username`, `password`, `is_verified`) VALUES
 (12345678918, 'lululala', '$2y$10$J23NNXSjscUHCEHXDkSaTOvbm8gQYRVmMtdqCGPQyJuFeuMfS.hJG', 1),
 (1212345678912354, 'masyarakat', '$2y$10$BqCVWU56ME/Y.MctVXBw7uI8w26d1gK/HY219JiQWe./ppfYVEeYS', 1);
 UNLOCK TABLES;

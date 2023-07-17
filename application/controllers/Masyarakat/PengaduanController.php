@@ -22,7 +22,7 @@ class PengaduanController extends CI_Controller {
   {
     $data['title'] = 'Pengaduan';
     $masyarakat = $this->db->get_where('masyarakat',['username' => $this->session->userdata('username')])->row_array();
-    $data['data_pengaduan'] = $this->Pengaduan_m->data_pengaduan_masyarakat_nik($masyarakat['nik'])->result_array();
+    $data['data_pengaduan'] = $this->Pengaduan_m->data_pengaduan_masyarakat_nik($masyarakat['nik_masyarakat'])->result_array();
     $data['data_kabupaten'] = $this->Kabupaten_m->get_all()->result_array();
 
     $this->form_validation->set_rules('isi_laporan','Isi Laporan Pengaduan','trim|required');
