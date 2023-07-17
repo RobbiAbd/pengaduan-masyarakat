@@ -185,7 +185,7 @@ CREATE TABLE `petugas` (
   `level` enum('admin','petugas') NOT NULL,
   `foto_profile` varchar(225) NOT NULL,
   PRIMARY KEY (`id_petugas`),
-  UNIQUE KEY `username` (`username`)
+  UNIQUE KEY `username_petugas` (`username_petugas`)
 ) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=latin1;
 
 --
